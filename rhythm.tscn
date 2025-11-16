@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://3ei7oalhajg2"]
+
+[ext_resource type="Script" uid="uid://dw10ne56nbsj8" path="res://rhythm.gd" id="1_lg58s"]
+[ext_resource type="AudioStream" uid="uid://c1tx6eusxgeq3" path="res://faaah.mp3" id="2_b12pq"]
+[ext_resource type="AudioStream" uid="uid://djh1k6i8jibdt" path="res://vine-boom.mp3" id="3_q13yt"]
+
+[node name="Rhythm" type="Node2D"]
+script = ExtResource("1_lg58s")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b12pq")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_q13yt")
