@@ -2,7 +2,7 @@ extends Node2D
 var time_counter = 0
 var lerp_counter = 0
 var lerp_speed_multi = 5
-var type = 5
+var type = 0
 
 func _process(delta: float) -> void:
 	time_counter += delta

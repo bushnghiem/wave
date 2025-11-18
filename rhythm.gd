@@ -5,6 +5,8 @@ signal good
 signal mistake
 signal left
 signal right
+signal swap_to_fast
+signal swap_to_norm
 
 var timeline = []
 var press_tracker = []
@@ -39,7 +41,7 @@ func has_letters(your_string):
 
 func _ready() -> void:
 	add_notes(10, 0)
-	add_notes(5, 1)
+	add_notes(6, 1)
 	add_notes(5, 0)
 	add_end()
 
@@ -108,21 +110,22 @@ func add_notes(new_notes, type):
 		for n in new_notes:
 			get_tree().create_timer(song_length + note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
-				current_note_index += 1
-				note_holder2 = timeline[current_note_index]
+				note_holder2 = timeline[current_note_index + 1]
 				note_press_time += note_length
 				print(note_press_time)
 				$AudioStreamPlayer.play()
 				press_left = !press_left
 				if (note_holder1 == "normal" and note_holder2 == "short"):
 					$AudioStreamPlayer2.play()
+					swap_to_fast.emit()
 				);
 			get_tree().create_timer(song_length + note_length + press_window).timeout.connect(func():
-				note_holder = press_tracker[current_note_index - 1]
+				note_holder = press_tracker[current_note_index]
 				if (note_holder == "blank"):
-					press_tracker[current_note_index - 1] = "bad"
+					press_tracker[current_note_index ] = "bad"
 					mistake.emit()
 					misses += 1
+				current_note_index += 1
 				);
 			song_length += note_length
 			timeline.append("normal")
@@ -131,21 +134,22 @@ func add_notes(new_notes, type):
 		for n in new_notes:
 			get_tree().create_timer(song_length + short_note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
-				current_note_index += 1
-				note_holder2 = timeline[current_note_index]
+				note_holder2 = timeline[current_note_index+1]
 				note_press_time += short_note_length
 				print(note_press_time)
 				$AudioStreamPlayer.play()
 				press_left = !press_left
 				if (note_holder1 == "short" and note_holder2 == "normal"):
 					$AudioStreamPlayer2.play()
+					swap_to_norm.emit()
 				);
-			get_tree().create_timer(song_length + note_length + press_window).timeout.connect(func():
-				note_holder = press_tracker[current_note_index - 1]
+			get_tree().create_timer(song_length + short_note_length + press_window).timeout.connect(func():
+				note_holder = press_tracker[current_note_index]
 				if (note_holder == "blank"):
-					press_tracker[current_note_index - 1] = "bad"
+					press_tracker[current_note_index] = "bad"
 					mistake.emit()
 					misses += 1
+				current_note_index += 1
 				);
 			song_length += short_note_length
 			timeline.append("short")

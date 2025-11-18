@@ -16,3 +16,5 @@ script = ExtResource("1_ig7tw")
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
 [connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]
 [connection signal="perfect" from="Rhythm" to="Particle" method="perfect"]
+[connection signal="swap_to_fast" from="Rhythm" to="Particle" method="short_swap"]
+[connection signal="swap_to_norm" from="Rhythm" to="Particle" method="normal_swap"]
