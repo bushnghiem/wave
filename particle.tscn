@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://chck1raxgdtxp"]
+[gd_scene load_steps=4 format=3 uid="uid://chck1raxgdtxp"]
 
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_kgu82"]
 [ext_resource type="Script" uid="uid://f5nl2vr58ucb" path="res://particle.gd" id="1_pxd2d"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxd2d"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 30.0
+scale_max = 30.0
 
 [node name="Particle" type="Node2D"]
 script = ExtResource("1_pxd2d")
@@ -12,5 +18,12 @@ texture = ExtResource("1_kgu82")
 [node name="ColorReset" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 500
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_pxd2d")
+
+[node name="Camera2D" type="Camera2D" parent="."]
 
 [connection signal="timeout" from="ColorReset" to="." method="_on_color_reset_timeout"]
