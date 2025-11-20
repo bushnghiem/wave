@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://sm3d4vuq0b24"]
+
+[ext_resource type="Script" uid="uid://d1lnc3pmcncc8" path="res://tutorialpart_1.gd" id="1_y8obv"]
+[ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_gtjdh"]
+[ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_eo40m"]
+[ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_rao7d"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_y8obv")
+
+[node name="Rhythm" parent="." instance=ExtResource("2_gtjdh")]
+tutorial = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("3_eo40m")
+
+[node name="Particle" parent="." instance=ExtResource("4_rao7d")]
+
+[connection signal="good" from="Rhythm" to="Particle" method="good"]
+[connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]
+[connection signal="perfect" from="Rhythm" to="Particle" method="perfect"]
+[connection signal="swap_to_fast_left" from="Rhythm" to="Particle" method="swap_to_fast_left"]
+[connection signal="swap_to_fast_right" from="Rhythm" to="Particle" method="swap_to_fast_right"]
+[connection signal="swap_to_norm_left" from="Rhythm" to="Particle" method="swap_to_norm_left"]
+[connection signal="swap_to_norm_right" from="Rhythm" to="Particle" method="swap_to_norm_right"]

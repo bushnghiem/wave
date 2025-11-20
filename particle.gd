@@ -5,7 +5,7 @@ var time_counter3 = 0
 var time_counter4 = 0
 var lerp_counter = 0
 var lerp_speed_multi = 0.5
-var type = 0
+@export var type = 0
 var y_speed = -500
 
 func _process(delta: float) -> void:

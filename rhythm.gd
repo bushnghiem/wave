@@ -29,6 +29,9 @@ var note_check = false
 var total = 0.0
 var hit_ratio = 0.0
 var perfect_ratio = 0.0
+@export var auto_play = false
+@export var tutorial = false
+@export var tutorial_part = 1
 const win_ratio_threshold = 0.7
 const good_win_ratio = 0.5
 const note_length = 1.0
@@ -48,59 +51,84 @@ func has_letters(your_string):
 		return false
 
 func _ready() -> void:
-	add_notes(2, 0)
-	add_notes(2, 1)
-	add_notes(4, 0)
-	add_notes(4, 1)
-	add_notes(6, 0)
-	add_notes(6, 1)
-	add_notes(8, 0)
-	add_notes(8, 1)
-	add_end()
+	if tutorial:
+		tutorial_parts(tutorial_part)
+	else:
+		add_notes(2, 0)
+		add_notes(2, 1)
+		add_notes(4, 0)
+		add_notes(4, 1)
+		add_notes(6, 0)
+		add_notes(6, 1)
+		add_notes(8, 0)
+		add_notes(8, 1)
+		add_end()
+
+func tutorial_parts(part):
+	if part == 1:
+		add_notes(4, 0)
+		add_end()
+	elif part == 2:
+		add_notes(4, 1)
+		add_end()
+	elif part == 3:
+		add_notes(4, 0)
+		add_notes(4, 1)
+		add_notes(4, 0)
+		add_end()
 
 func _unhandled_input(event):
 	if !done:
 		if Input.is_action_pressed("left"):
-			left.emit()
-			
-			if press_now and press_tracker[current_note_index] == "blank" and press_left:
-				if perfect_now:
-					press_tracker[current_note_index] = "perfect"
-					perfect.emit()
-					print("perfect")
-					perfects += 1
-					hits += 1
-				else:
-					press_tracker[current_note_index] = "good"
-					good.emit()
-					print("good")
-					goods += 1
-					hits += 1
-			else:
-				press_tracker[current_note_index] = "bad"
-				mistake.emit()
-				print("mistake")
-				misses += 1
+			if !auto_play:
+				left_button()
 		if Input.is_action_pressed("right"):
-			right.emit()
-			if press_now and press_tracker[current_note_index] == "blank" and !press_left:
-				if perfect_now:
-					press_tracker[current_note_index] = "perfect"
-					perfect.emit()
-					print("perfect")
-					perfects += 1
-					hits += 1
-				else:
-					press_tracker[current_note_index] = "good"
-					good.emit()
-					print("good")
-					goods += 1
-					hits += 1
-			else:
-				press_tracker[current_note_index] = "bad"
-				mistake.emit()
-				print("mistake")
-				misses += 1
+			if !auto_play:
+				right_button()
+
+func left_button():
+	left.emit()
+	if press_now and press_tracker[current_note_index] == "blank" and press_left:
+		if perfect_now:
+			press_tracker[current_note_index] = "perfect"
+			perfect.emit()
+			print("perfect")
+			perfects += 1
+			hits += 1
+		else:
+			press_tracker[current_note_index] = "good"
+			good.emit()
+			print("good")
+			goods += 1
+			hits += 1
+	else:
+		press_tracker[current_note_index] = "bad"
+		mistake.emit()
+		print("mistake")
+		misses += 1
+
+func right_button():
+	right.emit()
+	if press_now and press_tracker[current_note_index] == "blank" and !press_left:
+		if perfect_now:
+			press_tracker[current_note_index] = "perfect"
+			perfect.emit()
+			print("perfect")
+			perfects += 1
+			hits += 1
+		else:
+			press_tracker[current_note_index] = "good"
+			good.emit()
+			print("good")
+			goods += 1
+			hits += 1
+	else:
+		press_tracker[current_note_index] = "bad"
+		mistake.emit()
+		print("mistake")
+		misses += 1
+
+
 
 func _process(delta: float) -> void:
 	#print(press_left)
@@ -129,12 +157,19 @@ func calculate_score():
 	perfect_ratio = perfects / hits
 	if hit_ratio >= win_ratio_threshold:
 		print("victory")
+		if tutorial:
+			if tutorial_part < 3:
+				get_tree().change_scene_to_file("res://tutorialpart" + str(tutorial_part + 1) + ".tscn")
+			elif tutorial_part >= 3:
+				get_tree().change_scene_to_file("res://main.tscn")
 		if perfect_ratio >= good_win_ratio:
 			print("good victory")
 			if perfect_ratio == 1:
 				print("perfect victory")
 	else:
 		print("loser")
+		if tutorial:
+			get_tree().change_scene_to_file("res://tutorialpart" + str(tutorial_part) + ".tscn")
 	
 
 func add_notes(new_notes, type):
@@ -158,6 +193,13 @@ func add_notes(new_notes, type):
 					else:
 						print("press_left is false right now, thus you will press right and should swap to fast left")
 						swap_to_fast_left.emit()
+				);
+			get_tree().create_timer(song_length + note_length + perfect_window / 2).timeout.connect(func():
+				if auto_play:
+					if press_left:
+						left_button()
+					else:
+						right_button()
 				);
 			get_tree().create_timer(song_length + note_length + press_window).timeout.connect(func():
 				note_holder = press_tracker[current_note_index]
@@ -187,6 +229,13 @@ func add_notes(new_notes, type):
 					else:
 						print("press_left is false right now, thus you will press right and should swap to normal left")
 						swap_to_norm_left.emit()
+				);
+			get_tree().create_timer(song_length + short_note_length + perfect_window / 2).timeout.connect(func():
+				if auto_play:
+					if press_left:
+						left_button()
+					else:
+						right_button()
 				);
 			get_tree().create_timer(song_length + short_note_length + press_window).timeout.connect(func():
 				note_holder = press_tracker[current_note_index]
