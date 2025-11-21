@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cwd4jl5lawqqn"
+path="res://.godot/imported/36. Try Again.mp3-0f56b594f398635eea4a290807a5a6f3.mp3str"
+
+[deps]
+
+source_file="res://sfx/36. Try Again.mp3"
+dest_files=["res://.godot/imported/36. Try Again.mp3-0f56b594f398635eea4a290807a5a6f3.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

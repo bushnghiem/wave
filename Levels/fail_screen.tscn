@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://s45ybjskmfd8"]
+
+[ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_hbaie"]
+[ext_resource type="Script" uid="uid://bcfm2i5m7f86e" path="res://Levels/fail_screen.gd" id="1_ondbh"]
+[ext_resource type="AudioStream" uid="uid://cwd4jl5lawqqn" path="res://sfx/36. Try Again.mp3" id="3_ondbh"]
+
+[node name="FailScreen" type="Node2D"]
+script = ExtResource("1_ondbh")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(-3.4999924, -4.499977)
+scale = Vector2(12.0546875, 7.179687)
+texture = ExtResource("1_hbaie")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-94, -255)
+scale = Vector2(2.3203125, 1.046875)
+texture = ExtResource("1_hbaie")
+
+[node name="TryAgain" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(422, 181)
+texture = ExtResource("1_hbaie")
+
+[node name="LossText" type="Label" parent="."]
+visible = false
+offset_left = -45.0
+offset_top = -11.0
+offset_right = 35.0
+offset_bottom = 12.0
+text = "You Failed"
+
+[node name="FailureSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ondbh")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

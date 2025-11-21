@@ -9,6 +9,7 @@
 script = ExtResource("1_fc0e3")
 
 [node name="Rhythm" parent="." instance=ExtResource("2_7jktm")]
+auto_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_ryrav")

@@ -57,13 +57,13 @@ func _ready() -> void:
 	$AudioStreamPlayer3.play()
 	note_press_time += start_delay
 	done = true
-	get_tree().create_timer(3).timeout.connect(func():
+	get_tree().create_timer(start_delay + 1).timeout.connect(func():
 		done = false
 		);
 	if tutorial:
 		tutorial_parts(tutorial_part)
 	else:
-		metronome_limit = 3
+		metronome_limit = start_delay * 2 - 1
 		add_notes(2, 0)
 		add_notes(2, 1)
 		add_notes(4, 0)
@@ -76,18 +76,18 @@ func _ready() -> void:
 
 func tutorial_parts(part):
 	if part == 1:
-		metronome_limit = 3
+		metronome_limit = 100000
 		add_notes(4, 0)
 		add_end()
 	elif part == 2:
-		metronome_limit = 6
+		metronome_limit = 100000
 		$Metronome.stop()
 		$Metronome.wait_time = 0.5
 		$Metronome.start()
 		add_notes(4, 1)
 		add_end()
 	elif part == 3:
-		metronome_limit = 3
+		metronome_limit = 100000
 		add_notes(4, 0)
 		add_notes(4, 1)
 		add_notes(4, 0)
@@ -101,6 +101,9 @@ func _unhandled_input(event):
 		if Input.is_action_pressed("right"):
 			if !auto_play:
 				right_button()
+		if Input.is_action_pressed("reset"):
+			if !tutorial:
+				reset_button()
 
 func left_button():
 	left.emit()
@@ -108,19 +111,19 @@ func left_button():
 		if perfect_now:
 			press_tracker[current_note_index] = "perfect"
 			perfect.emit()
-			print("perfect")
+			#print("perfect")
 			perfects += 1
 			hits += 1
 		else:
 			press_tracker[current_note_index] = "good"
 			good.emit()
-			print("good")
+			#print("good")
 			goods += 1
 			hits += 1
 	else:
 		press_tracker[current_note_index] = "bad"
 		mistake.emit()
-		print("mistake")
+		#print("mistake")
 		misses += 1
 
 func right_button():
@@ -129,22 +132,23 @@ func right_button():
 		if perfect_now:
 			press_tracker[current_note_index] = "perfect"
 			perfect.emit()
-			print("perfect")
+			#print("perfect")
 			perfects += 1
 			hits += 1
 		else:
 			press_tracker[current_note_index] = "good"
 			good.emit()
-			print("good")
+			#print("good")
 			goods += 1
 			hits += 1
 	else:
 		press_tracker[current_note_index] = "bad"
 		mistake.emit()
-		print("mistake")
+		#print("mistake")
 		misses += 1
 
-
+func reset_button():
+	get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
 
 func _process(delta: float) -> void:
 	#print(press_left)
@@ -159,10 +163,10 @@ func _process(delta: float) -> void:
 		press_now = false
 	if timeline[current_note_index] == "end" and !done:
 		get_tree().create_timer(end_screen_delay).timeout.connect(func():
-				print(str(perfects) + " perfects")
-				print(str(goods) + " goods")
-				print(str(hits) + " hits")
-				print(str(misses) + " misses")
+				#print(str(perfects) + " perfects")
+				#print(str(goods) + " goods")
+				#print(str(hits) + " hits")
+				#print(str(misses) + " misses")
 				calculate_score()
 				);
 		done = true
@@ -172,23 +176,27 @@ func calculate_score():
 	hit_ratio = hits / total
 	perfect_ratio = perfects / hits
 	if hit_ratio >= win_ratio_threshold:
-		print("victory")
+		#print("victory")
 		if tutorial:
 			if tutorial_part < 3:
 				get_tree().change_scene_to_file("res://Levels/pre_tutorial_" + str(tutorial_part + 1) + ".tscn")
 			elif tutorial_part >= 3:
 				get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
-		if perfect_ratio == 1:
-			print("perfect victory")
-			#get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
-		if perfect_ratio >= good_win_ratio:
-			print("good victory")
-			#get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
-		#get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
+		else:
+			if perfect_ratio == 1:
+				#print("perfect victory")
+				get_tree().change_scene_to_file("res://Levels/win_screen_3.tscn")
+			elif perfect_ratio >= good_win_ratio:
+				#print("good victory")
+				get_tree().change_scene_to_file("res://Levels/win_screen_2.tscn")
+			else:
+				get_tree().change_scene_to_file("res://Levels/win_screen_1.tscn")
 	else:
-		print("loser")
+		#print("loser")
 		if tutorial:
 			get_tree().change_scene_to_file("res://Levels/pre_tutorial_" + str(tutorial_part) + ".tscn")
+		else:
+			get_tree().change_scene_to_file("res://Levels/fail_screen.tscn")
 	
 
 func add_notes(new_notes, type):
@@ -212,6 +220,11 @@ func add_notes(new_notes, type):
 					else:
 						print("press_left is false right now, thus you will press right and should swap to fast left")
 						swap_to_fast_left.emit()
+					if tutorial and tutorial_part == 3:
+						$AudioStreamPlayer3.play()
+						$Metronome.stop()
+						$Metronome.wait_time = 0.5
+						$Metronome.start()
 				);
 			get_tree().create_timer(start_delay + song_length + note_length + perfect_window / 2).timeout.connect(func():
 				if auto_play:
@@ -248,6 +261,11 @@ func add_notes(new_notes, type):
 					else:
 						print("press_left is false right now, thus you will press right and should swap to normal left")
 						swap_to_norm_left.emit()
+					if tutorial and tutorial_part == 3:
+						$AudioStreamPlayer3.play()
+						$Metronome.stop()
+						$Metronome.wait_time = 1
+						$Metronome.start()
 				);
 			get_tree().create_timer(start_delay + song_length + short_note_length + perfect_window / 2).timeout.connect(func():
 				if auto_play:

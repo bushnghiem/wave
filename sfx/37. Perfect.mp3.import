@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cuxj7qis1yw3r"
+path="res://.godot/imported/37. Perfect.mp3-6ddb3ad5e28fd76e8fcaf23a622e1635.mp3str"
+
+[deps]
+
+source_file="res://sfx/37. Perfect.mp3"
+dest_files=["res://.godot/imported/37. Perfect.mp3-6ddb3ad5e28fd76e8fcaf23a622e1635.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

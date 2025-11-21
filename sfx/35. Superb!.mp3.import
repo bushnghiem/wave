@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://l6yybybf5goj"
+path="res://.godot/imported/35. Superb!.mp3-9f9d552a8b6c23e91cb785505fd8350d.mp3str"
+
+[deps]
+
+source_file="res://sfx/35. Superb!.mp3"
+dest_files=["res://.godot/imported/35. Superb!.mp3-9f9d552a8b6c23e91cb785505fd8350d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
