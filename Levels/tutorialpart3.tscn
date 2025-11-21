@@ -1,20 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://sm3d4vuq0b24"]
+[gd_scene load_steps=5 format=3 uid="uid://bcslpdmtwmxlx"]
 
-[ext_resource type="Script" uid="uid://d1lnc3pmcncc8" path="res://tutorialpart_1.gd" id="1_y8obv"]
-[ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_gtjdh"]
-[ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_eo40m"]
-[ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_rao7d"]
+[ext_resource type="Script" uid="uid://bxme7gv25g8xh" path="res://Levels/tutorialpart_3.gd" id="1_dupb7"]
+[ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_om56g"]
+[ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_vgvll"]
+[ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_88ycm"]
 
 [node name="Main" type="Node2D"]
-script = ExtResource("1_y8obv")
+script = ExtResource("1_dupb7")
 
-[node name="Rhythm" parent="." instance=ExtResource("2_gtjdh")]
+[node name="Rhythm" parent="." instance=ExtResource("2_om56g")]
 tutorial = true
+tutorial_part = 3
 
 [node name="Camera2D" type="Camera2D" parent="."]
-script = ExtResource("3_eo40m")
+script = ExtResource("3_vgvll")
 
-[node name="Particle" parent="." instance=ExtResource("4_rao7d")]
+[node name="Particle" parent="." instance=ExtResource("4_88ycm")]
+position = Vector2(500, 0)
 
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
 [connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]

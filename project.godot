@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="wave"
-run/main_scene="uid://bp7d0301tv1yc"
+run/main_scene="uid://byl0qxtev3fo6"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 

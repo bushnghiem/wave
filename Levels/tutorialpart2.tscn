@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b4ax82kprtbgt"]
 
-[ext_resource type="Script" uid="uid://cj08o0mcid4qg" path="res://tutorialpart_2.gd" id="1_qlyf5"]
+[ext_resource type="Script" uid="uid://cj08o0mcid4qg" path="res://Levels/tutorialpart_2.gd" id="1_qlyf5"]
 [ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_fpbqk"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_tfr0p"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_iv87i"]
@@ -16,6 +16,7 @@ tutorial_part = 2
 script = ExtResource("3_tfr0p")
 
 [node name="Particle" parent="." instance=ExtResource("4_iv87i")]
+position = Vector2(250, 0)
 type = 1
 
 [connection signal="good" from="Rhythm" to="Particle" method="good"]

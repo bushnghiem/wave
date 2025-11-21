@@ -102,6 +102,7 @@ func swap_to_fast_right():
 
 func mistake():
 	$Sprite2D.modulate = Color(1, 0, 0)
+	$GPUParticles2D.emitting = false
 	$ColorReset.start()
 
 func perfect():
@@ -114,3 +115,5 @@ func good():
 
 func _on_color_reset_timeout() -> void:
 	$Sprite2D.modulate = Color(1, 1, 1)
+	if !$GPUParticles2D.emitting:
+		$GPUParticles2D.emitting = true

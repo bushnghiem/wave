@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://7vlaa1y3t8mu"]
+
+[ext_resource type="Script" uid="uid://cxnc7xclfgpvs" path="res://Levels/pre_tutorial_1.gd" id="1_xgda0"]
+
+[node name="PreTutorial1" type="Node2D"]
+script = ExtResource("1_xgda0")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -56.0
+offset_top = -11.0
+offset_right = 66.0
+offset_bottom = 12.0
+text = "4 Normal Notes"
+
+[node name="TutorialTime" type="Timer" parent="."]
+autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[connection signal="timeout" from="TutorialTime" to="." method="_on_tutorial_time_timeout"]

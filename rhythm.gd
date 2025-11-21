@@ -29,6 +29,9 @@ var note_check = false
 var total = 0.0
 var hit_ratio = 0.0
 var perfect_ratio = 0.0
+var start_delay = 2
+var metronome_count = 0
+var metronome_limit = 0
 @export var auto_play = false
 @export var tutorial = false
 @export var tutorial_part = 1
@@ -51,9 +54,16 @@ func has_letters(your_string):
 		return false
 
 func _ready() -> void:
+	$AudioStreamPlayer3.play()
+	note_press_time += start_delay
+	done = true
+	get_tree().create_timer(3).timeout.connect(func():
+		done = false
+		);
 	if tutorial:
 		tutorial_parts(tutorial_part)
 	else:
+		metronome_limit = 3
 		add_notes(2, 0)
 		add_notes(2, 1)
 		add_notes(4, 0)
@@ -66,12 +76,18 @@ func _ready() -> void:
 
 func tutorial_parts(part):
 	if part == 1:
+		metronome_limit = 3
 		add_notes(4, 0)
 		add_end()
 	elif part == 2:
+		metronome_limit = 6
+		$Metronome.stop()
+		$Metronome.wait_time = 0.5
+		$Metronome.start()
 		add_notes(4, 1)
 		add_end()
 	elif part == 3:
+		metronome_limit = 3
 		add_notes(4, 0)
 		add_notes(4, 1)
 		add_notes(4, 0)
@@ -159,17 +175,20 @@ func calculate_score():
 		print("victory")
 		if tutorial:
 			if tutorial_part < 3:
-				get_tree().change_scene_to_file("res://tutorialpart" + str(tutorial_part + 1) + ".tscn")
+				get_tree().change_scene_to_file("res://Levels/pre_tutorial_" + str(tutorial_part + 1) + ".tscn")
 			elif tutorial_part >= 3:
-				get_tree().change_scene_to_file("res://main.tscn")
+				get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
+		if perfect_ratio == 1:
+			print("perfect victory")
+			#get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
 		if perfect_ratio >= good_win_ratio:
 			print("good victory")
-			if perfect_ratio == 1:
-				print("perfect victory")
+			#get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
+		#get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
 	else:
 		print("loser")
 		if tutorial:
-			get_tree().change_scene_to_file("res://tutorialpart" + str(tutorial_part) + ".tscn")
+			get_tree().change_scene_to_file("res://Levels/pre_tutorial_" + str(tutorial_part) + ".tscn")
 	
 
 func add_notes(new_notes, type):
@@ -179,7 +198,7 @@ func add_notes(new_notes, type):
 	note_count += new_notes
 	if type == 0:
 		for n in new_notes:
-			get_tree().create_timer(song_length + note_length).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index + 1]
 				note_press_time += note_length
@@ -194,14 +213,14 @@ func add_notes(new_notes, type):
 						print("press_left is false right now, thus you will press right and should swap to fast left")
 						swap_to_fast_left.emit()
 				);
-			get_tree().create_timer(song_length + note_length + perfect_window / 2).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + note_length + perfect_window / 2).timeout.connect(func():
 				if auto_play:
 					if press_left:
 						left_button()
 					else:
 						right_button()
 				);
-			get_tree().create_timer(song_length + note_length + press_window).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + note_length + press_window).timeout.connect(func():
 				note_holder = press_tracker[current_note_index]
 				if (note_holder == "blank"):
 					press_tracker[current_note_index ] = "bad"
@@ -215,7 +234,7 @@ func add_notes(new_notes, type):
 			press_tracker.append("blank")
 	else:
 		for n in new_notes:
-			get_tree().create_timer(song_length + short_note_length).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + short_note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index+1]
 				note_press_time += short_note_length
@@ -230,14 +249,14 @@ func add_notes(new_notes, type):
 						print("press_left is false right now, thus you will press right and should swap to normal left")
 						swap_to_norm_left.emit()
 				);
-			get_tree().create_timer(song_length + short_note_length + perfect_window / 2).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + short_note_length + perfect_window / 2).timeout.connect(func():
 				if auto_play:
 					if press_left:
 						left_button()
 					else:
 						right_button()
 				);
-			get_tree().create_timer(song_length + short_note_length + press_window).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + short_note_length + press_window).timeout.connect(func():
 				note_holder = press_tracker[current_note_index]
 				if (note_holder == "blank"):
 					press_tracker[current_note_index] = "bad"
@@ -254,3 +273,11 @@ func add_notes(new_notes, type):
 func add_end():
 	timeline.append("end")
 	press_tracker.append("end")
+
+
+func _on_metronome_timeout() -> void:
+	metronome_count += 1
+	$AudioStreamPlayer3.play()
+	if metronome_count < metronome_limit:
+		$Metronome.start()
+	
