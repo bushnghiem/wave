@@ -54,12 +54,18 @@ func has_letters(your_string):
 		return false
 
 func _ready() -> void:
-	$AudioStreamPlayer3.play()
+	if tutorial_part != 2:
+		$AudioStreamPlayer3.play()
 	note_press_time += start_delay
 	done = true
-	get_tree().create_timer(start_delay + 1).timeout.connect(func():
-		done = false
-		);
+	if tutorial_part != 2:
+		get_tree().create_timer(start_delay + 0.5).timeout.connect(func():
+			done = false
+			);
+	else:
+		get_tree().create_timer(start_delay + 0.25).timeout.connect(func():
+			done = false
+			);
 	if tutorial:
 		tutorial_parts(tutorial_part)
 	else:

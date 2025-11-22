@@ -1,4 +1,8 @@
 extends Node2D
+
+signal tutorial_left
+signal tutorial_right
+
 var time_counter1 = 0
 var time_counter2 = 0
 var time_counter3 = 0
@@ -60,8 +64,25 @@ func _process(delta: float) -> void:
 	elif type == 3:
 		time_counter4 += delta
 		global_position.x = fast_path2()
+	elif type == 4:
+		if global_position.x + 20 < -500 or global_position.x -20 > -500:
+			time_counter1 += delta
+			global_position.x = normal_path1()
+		else:
+			tutorial_left.emit()
+			type = 5
+			get_tree().paused = true
+	elif type == 5:
+		if global_position.x + 20 < 500 or global_position.x -20 > 500:
+			time_counter1 += delta
+			global_position.x = normal_path1()
+		else:
+			tutorial_right.emit()
+			type = 4
+			get_tree().paused = true
 	else:
-		global_position.x = 0
+		time_counter1 += delta
+		global_position.x = normal_path1()
 
 func normal_path1():
 	#Starts left at 1 note per second
@@ -117,3 +138,11 @@ func _on_color_reset_timeout() -> void:
 	$Sprite2D.modulate = Color(1, 1, 1)
 	if !$GPUParticles2D.emitting:
 		$GPUParticles2D.emitting = true
+
+
+func _on_tutorial_rhythm_pressed_correct() -> void:
+	perfect()
+
+
+func _on_tutorial_rhythm_pressed_incorrect() -> void:
+	mistake()

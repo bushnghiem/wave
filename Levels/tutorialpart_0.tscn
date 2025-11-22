@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxhsf7nbux7xq"]
+
+[ext_resource type="Script" uid="uid://sobq5iteg8cf" path="res://Levels/tutorialpart_0.gd" id="1_1a7w6"]
+[ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="1_ti2hj"]
+[ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="2_rw3fg"]
+[ext_resource type="PackedScene" uid="uid://bwub0cn28jngc" path="res://tutorial_rhythm.tscn" id="4_gvxqr"]
+
+[node name="TutorialPart0" type="Node2D"]
+script = ExtResource("1_1a7w6")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+script = ExtResource("1_ti2hj")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Instruction" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 1034.0
+offset_top = 236.0
+offset_right = 1130.0
+offset_bottom = 261.0
+text = "Press A Now"
+
+[node name="FinalMessage" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 364.0
+offset_top = 169.0
+offset_right = 788.0
+offset_bottom = 244.0
+text = "Great Job.
+ Now you just need to press them in Rhythm.
+ R usually resets the level but press R now to move on"
+horizontal_alignment = 1
+
+[node name="Particle" parent="." instance=ExtResource("2_rw3fg")]
+position = Vector2(500, 0)
+type = 4
+
+[node name="TutorialRhythm" parent="." instance=ExtResource("4_gvxqr")]
+process_mode = 3
+
+[connection signal="tutorial_left" from="Particle" to="." method="_on_particle_tutorial_left"]
+[connection signal="tutorial_left" from="Particle" to="TutorialRhythm" method="_on_particle_tutorial_left"]
+[connection signal="tutorial_right" from="Particle" to="." method="_on_particle_tutorial_right"]
+[connection signal="tutorial_right" from="Particle" to="TutorialRhythm" method="_on_particle_tutorial_right"]
+[connection signal="finished" from="TutorialRhythm" to="." method="_on_tutorial_rhythm_finished"]
+[connection signal="pressed_correct" from="TutorialRhythm" to="." method="_on_tutorial_rhythm_pressed_correct"]
+[connection signal="pressed_correct" from="TutorialRhythm" to="Particle" method="_on_tutorial_rhythm_pressed_correct"]
+[connection signal="pressed_incorrect" from="TutorialRhythm" to="Particle" method="_on_tutorial_rhythm_pressed_incorrect"]
