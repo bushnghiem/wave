@@ -17,6 +17,38 @@ script = ExtResource("3_ryrav")
 [node name="Particle" parent="." instance=ExtResource("4_eow3j")]
 position = Vector2(500, 0)
 
+[node name="Particle2" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = 1200
+
+[node name="Particle3" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = 2400
+
+[node name="Particle4" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = 3600
+
+[node name="Particle5" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = 4800
+
+[node name="Particle6" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = -1200
+
+[node name="Particle7" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = -2400
+
+[node name="Particle8" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = -3600
+
+[node name="Particle9" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
+position = Vector2(500, 0)
+x_offset = -4800
+
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
 [connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]
 [connection signal="perfect" from="Rhythm" to="Particle" method="perfect"]

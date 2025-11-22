@@ -54,6 +54,7 @@ func has_letters(your_string):
 		return false
 
 func _ready() -> void:
+	connect_all_npc()
 	if tutorial_part != 2:
 		$AudioStreamPlayer3.play()
 	note_press_time += start_delay
@@ -79,6 +80,14 @@ func _ready() -> void:
 		add_notes(8, 0)
 		add_notes(8, 1)
 		add_end()
+
+func connect_all_npc():
+	var npcs = get_tree().get_nodes_in_group("NPC")
+	for npc in npcs:
+		swap_to_fast_left.connect(npc.swap_to_fast_left)
+		swap_to_norm_left.connect(npc.swap_to_norm_left)
+		swap_to_fast_right.connect(npc.swap_to_fast_right)
+		swap_to_norm_right.connect(npc.swap_to_norm_right)
 
 func tutorial_parts(part):
 	if part == 1:
@@ -169,10 +178,10 @@ func _process(delta: float) -> void:
 		press_now = false
 	if timeline[current_note_index] == "end" and !done:
 		get_tree().create_timer(end_screen_delay).timeout.connect(func():
-				#print(str(perfects) + " perfects")
-				#print(str(goods) + " goods")
-				#print(str(hits) + " hits")
-				#print(str(misses) + " misses")
+				print(str(perfects) + " perfects")
+				print(str(goods) + " goods")
+				print(str(hits) + " hits")
+				print(str(misses) + " misses")
 				calculate_score()
 				);
 		done = true

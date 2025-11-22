@@ -10,6 +10,7 @@ var time_counter4 = 0
 var lerp_counter = 0
 var lerp_speed_multi = 0.5
 @export var type = 0
+@export var x_offset = 0
 var y_speed = -500
 
 func _process(delta: float) -> void:
@@ -86,19 +87,19 @@ func _process(delta: float) -> void:
 
 func normal_path1():
 	#Starts left at 1 note per second
-	return sin(PI * time_counter1 + PI/2) * 500
+	return sin(PI * time_counter1 + PI/2) * 500 + x_offset
 
 func fast_path1():
 	#Starts left at 1 note per half second or 2 per second
-	return sin(2 * PI * time_counter2 + PI/2) * 250
+	return sin(2 * PI * time_counter2 + PI/2) * 250 + x_offset
 
 func normal_path2():
 	#Starts right at 1 note per second
-	return sin(PI * time_counter3 + 3 * PI / 2) * 500
+	return sin(PI * time_counter3 + 3 * PI / 2) * 500 + x_offset
 
 func fast_path2():
 	#Starts right at 1 note per half second or 2 per second
-	return sin(2 * PI * time_counter4 + 3 * PI / 2) * 250
+	return sin(2 * PI * time_counter4 + 3 * PI / 2) * 250 + x_offset
 
 func swap_to_norm_left():
 	time_counter1 = 0
