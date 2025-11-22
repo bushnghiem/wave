@@ -125,10 +125,12 @@ func swap_to_fast_right():
 func mistake():
 	$Sprite2D.modulate = Color(1, 0, 0)
 	$GPUParticles2D.emitting = false
+	$AnimationPlayer.play("mistake")
 	$ColorReset.start()
 
 func perfect():
 	$Sprite2D.modulate = Color(0, 1, 0)
+	$AnimationPlayer.play("perfect")
 	$ColorReset.start()
 
 func good():
@@ -137,6 +139,7 @@ func good():
 
 func _on_color_reset_timeout() -> void:
 	$Sprite2D.modulate = Color(1, 1, 1)
+	$AnimationPlayer.play("RESET")
 	if !$GPUParticles2D.emitting:
 		$GPUParticles2D.emitting = true
 

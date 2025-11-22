@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmprx52xq7sc6"]
+
+[ext_resource type="Script" uid="uid://bsdgfw2p4vnmf" path="res://background.gd" id="1_i7s6n"]
+[ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="1_oabld"]
+
+[node name="Background" type="Node2D"]
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_i7s6n")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_oabld")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(4000, 0)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_oabld")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-4000, 0)
+scale = Vector2(-1, 1)
+texture = ExtResource("1_oabld")

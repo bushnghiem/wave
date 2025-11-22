@@ -1,12 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://bp7d0301tv1yc"]
+[gd_scene load_steps=6 format=3 uid="uid://bp7d0301tv1yc"]
 
 [ext_resource type="Script" uid="uid://d24o84a0lyg5o" path="res://Levels/game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_7jktm"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_eow3j"]
+[ext_resource type="PackedScene" uid="uid://bmprx52xq7sc6" path="res://background.tscn" id="5_uda3f"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fc0e3")
+
+[node name="Background" parent="." instance=ExtResource("5_uda3f")]
 
 [node name="Rhythm" parent="." instance=ExtResource("2_7jktm")]
 
