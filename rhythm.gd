@@ -29,7 +29,7 @@ var note_check = false
 var total = 0.0
 var hit_ratio = 0.0
 var perfect_ratio = 0.0
-var start_delay = 2
+var start_delay = 2.0
 var metronome_count = 0
 var metronome_limit = 0
 @export var auto_play = false
@@ -71,14 +71,7 @@ func _ready() -> void:
 		tutorial_parts(tutorial_part)
 	else:
 		metronome_limit = start_delay * 2 - 1
-		add_notes(2, 0)
-		add_notes(2, 1)
-		add_notes(4, 0)
-		add_notes(4, 1)
-		add_notes(6, 0)
-		add_notes(6, 1)
-		add_notes(8, 0)
-		add_notes(8, 1)
+		add_notes(100, 0)
 		add_end()
 
 func connect_all_npc():
