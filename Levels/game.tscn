@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://bp7d0301tv1yc"]
+[gd_scene load_steps=8 format=3 uid="uid://bp7d0301tv1yc"]
 
 [ext_resource type="Script" uid="uid://d24o84a0lyg5o" path="res://Levels/game.gd" id="1_fc0e3"]
 [ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_7jktm"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bmprx52xq7sc6" path="res://background.tscn" id="5_uda3f"]
-[ext_resource type="AudioStream" uid="uid://rn3usr8wlw8l" path="res://sfx/rhtyhm_game2.mp3" id="6_jycte"]
+[ext_resource type="AudioStream" uid="uid://buug7ulr6tth0" path="res://sfx/rhtyhm_game.mp3" id="6_jycte"]
+[ext_resource type="PackedScene" uid="uid://xe44h23gycla" path="res://asteroid_spawner.tscn" id="7_ev4ff"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_fc0e3")
@@ -13,7 +14,6 @@ script = ExtResource("1_fc0e3")
 [node name="Background" parent="." instance=ExtResource("5_uda3f")]
 
 [node name="Rhythm" parent="." instance=ExtResource("2_7jktm")]
-start_delay = 4.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
@@ -56,6 +56,9 @@ x_offset = -4800
 
 [node name="Song" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_jycte")
+
+[node name="AsteroidSpawner" parent="." instance=ExtResource("7_ev4ff")]
+position = Vector2(0, -1500)
 
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
 [connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]
