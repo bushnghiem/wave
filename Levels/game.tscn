@@ -20,6 +20,7 @@ ignore_rotation = false
 script = ExtResource("3_ryrav")
 
 [node name="Particle" parent="." instance=ExtResource("4_eow3j")]
+z_index = 1
 position = Vector2(500, 0)
 
 [node name="Particle2" parent="." groups=["NPC"] instance=ExtResource("4_eow3j")]
@@ -60,6 +61,9 @@ stream = ExtResource("6_jycte")
 [node name="AsteroidSpawner" parent="." instance=ExtResource("7_ev4ff")]
 position = Vector2(0, -1500)
 
+[node name="Asteroid_Spawn" type="Timer" parent="."]
+autostart = true
+
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
 [connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]
 [connection signal="perfect" from="Rhythm" to="Particle" method="perfect"]
@@ -67,3 +71,4 @@ position = Vector2(0, -1500)
 [connection signal="swap_to_fast_right" from="Rhythm" to="Particle" method="swap_to_fast_right"]
 [connection signal="swap_to_norm_left" from="Rhythm" to="Particle" method="swap_to_norm_left"]
 [connection signal="swap_to_norm_right" from="Rhythm" to="Particle" method="swap_to_norm_right"]
+[connection signal="timeout" from="Asteroid_Spawn" to="." method="_on_asteroid_spawn_timeout"]

@@ -4,14 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_u87q6"]
 
 [node name="Asteroid" type="Node2D"]
-z_index = 10
-z_as_relative = false
 script = ExtResource("1_p0ukn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_u87q6")
 
 [node name="DeathClock" type="Timer" parent="."]
-wait_time = 4.0
+wait_time = 10.0
 
 [connection signal="timeout" from="DeathClock" to="." method="_on_death_clock_timeout"]
