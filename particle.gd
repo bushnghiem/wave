@@ -9,9 +9,13 @@ var time_counter3 = 0
 var time_counter4 = 0
 var lerp_counter = 0
 var lerp_speed_multi = 0.5
+var visibility_rect = Rect2(-5800, -3300, 11600, 6600)
 @export var type = 0
 @export var x_offset = 0
 var y_speed = -500
+
+func _ready() -> void:
+	$GPUParticles2D.set_visibility_rect(Rect2(-5800, -3300, 11600, 6600))
 
 func _process(delta: float) -> void:
 	#print("position: " + str(global_position.x) + " time: " + str(time_counter4))

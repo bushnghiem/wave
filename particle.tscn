@@ -69,6 +69,7 @@ script = ExtResource("1_pxd2d")
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
 amount = 500
 lifetime = 10.0
+visibility_rect = Rect2(-1, -1.0000502, 2, 2.00005)
 process_material = SubResource("ParticleProcessMaterial_pxd2d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
