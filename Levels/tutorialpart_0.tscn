@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dxhsf7nbux7xq"]
+[gd_scene load_steps=7 format=3 uid="uid://dxhsf7nbux7xq"]
 
 [ext_resource type="Script" uid="uid://sobq5iteg8cf" path="res://Levels/tutorialpart_0.gd" id="1_1a7w6"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="1_ti2hj"]
+[ext_resource type="Texture2D" uid="uid://bwse6ekg8mujt" path="res://2Dart/Lvl3_Background.png" id="2_lcjy1"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="2_rw3fg"]
+[ext_resource type="Script" uid="uid://bsdgfw2p4vnmf" path="res://background.gd" id="3_jff4e"]
 [ext_resource type="PackedScene" uid="uid://bwub0cn28jngc" path="res://tutorial_rhythm.tscn" id="4_gvxqr"]
 
 [node name="TutorialPart0" type="Node2D"]
 script = ExtResource("1_1a7w6")
+
+[node name="TrainingBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.000001, -1622.0001)
+scale = Vector2(11, 11)
+texture = ExtResource("2_lcjy1")
+script = ExtResource("3_jff4e")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("1_ti2hj")

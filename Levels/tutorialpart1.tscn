@@ -1,12 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://sm3d4vuq0b24"]
+[gd_scene load_steps=7 format=3 uid="uid://sm3d4vuq0b24"]
 
 [ext_resource type="Script" uid="uid://d1lnc3pmcncc8" path="res://Levels/tutorialpart_1.gd" id="1_y8obv"]
 [ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_gtjdh"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_eo40m"]
+[ext_resource type="Script" uid="uid://bsdgfw2p4vnmf" path="res://background.gd" id="3_euqou"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_rao7d"]
+[ext_resource type="Texture2D" uid="uid://bwse6ekg8mujt" path="res://2Dart/Lvl3_Background.png" id="5_bxlib"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_y8obv")
+
+[node name="TrainingBackground" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-1.000001, -1622.0001)
+scale = Vector2(11, 11)
+texture = ExtResource("5_bxlib")
+script = ExtResource("3_euqou")
 
 [node name="Rhythm" parent="." instance=ExtResource("2_gtjdh")]
 tutorial = true

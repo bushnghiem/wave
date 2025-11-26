@@ -1,20 +1,39 @@
-[gd_scene load_steps=2 format=3 uid="uid://7vlaa1y3t8mu"]
+[gd_scene load_steps=4 format=3 uid="uid://7vlaa1y3t8mu"]
 
 [ext_resource type="Script" uid="uid://cxnc7xclfgpvs" path="res://Levels/pre_tutorial_1.gd" id="1_xgda0"]
+[ext_resource type="Texture2D" uid="uid://bwse6ekg8mujt" path="res://2Dart/Lvl3_Background.png" id="2_03ms0"]
+[ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_2wn4b"]
 
 [node name="PreTutorial1" type="Node2D"]
 script = ExtResource("1_xgda0")
-
-[node name="Label" type="Label" parent="."]
-offset_left = -56.0
-offset_top = -11.0
-offset_right = 66.0
-offset_bottom = 12.0
-text = "4 Normal Notes"
 
 [node name="TutorialTime" type="Timer" parent="."]
 autostart = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(1461, 299.99997)
+rotation = 1.5707964
+scale = Vector2(10, 10)
+texture = ExtResource("2_03ms0")
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 1
+position = Vector2(584, 145)
+scale = Vector2(5, 5)
+texture = ExtResource("3_2wn4b")
+region_enabled = true
+region_rect = Rect2(191.06157, 160.75, 73.40358, 70.28848)
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 522.0
+offset_top = 367.0
+offset_right = 644.0
+offset_bottom = 390.0
+text = "4 Normal Notes"
 
 [connection signal="timeout" from="TutorialTime" to="." method="_on_tutorial_time_timeout"]
