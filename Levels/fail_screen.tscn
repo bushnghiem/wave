@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://s45ybjskmfd8"]
+[gd_scene load_steps=6 format=3 uid="uid://s45ybjskmfd8"]
 
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_hbaie"]
 [ext_resource type="Script" uid="uid://bcfm2i5m7f86e" path="res://Levels/fail_screen.gd" id="1_ondbh"]
-[ext_resource type="Texture2D" uid="uid://b24dlbnn364wn" path="res://2Dart/particle-Sheet.png" id="3_ndwvy"]
+[ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_h3ary"]
+[ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_ndwvy"]
 [ext_resource type="AudioStream" uid="uid://cwd4jl5lawqqn" path="res://sfx/36. Try Again.mp3" id="3_ondbh"]
 
 [node name="FailScreen" type="Node2D"]
@@ -16,19 +17,29 @@ position = Vector2(-3.4999924, -4.499977)
 scale = Vector2(12.0546875, 7.179687)
 texture = ExtResource("1_hbaie")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -188.5)
+scale = Vector2(0.06, 0.0395)
+texture = ExtResource("3_h3ary")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
-position = Vector2(-94, -255)
-scale = Vector2(2, 2)
+position = Vector2(0, -188)
+scale = Vector2(5, 5)
 texture = ExtResource("3_ndwvy")
-hframes = 5
-frame = 2
+region_enabled = true
+region_rect = Rect2(239.93184, 48.000004, 48.024338, 48.04646)
 
 [node name="TryAgain" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(422, 181)
-texture = ExtResource("1_hbaie")
+texture_filter = 1
+position = Vector2(343, 221)
+scale = Vector2(10, 10)
+texture = ExtResource("3_ndwvy")
+region_enabled = true
+region_rect = Rect2(287.96802, 31.94968, 36.003204, 9.077076)
 
 [node name="LossText" type="Label" parent="."]
 visible = false
@@ -36,7 +47,7 @@ offset_left = -45.0
 offset_top = -11.0
 offset_right = 35.0
 offset_bottom = 12.0
-text = "You Failed"
+text = "Waves do die?"
 
 [node name="FailureSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ondbh")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://chck1raxgdtxp"]
 
 [ext_resource type="Script" uid="uid://f5nl2vr58ucb" path="res://particle.gd" id="1_pxd2d"]
-[ext_resource type="Texture2D" uid="uid://b24dlbnn364wn" path="res://2Dart/particle-Sheet.png" id="2_pxd2d"]
+[ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="2_pxd2d"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxd2d"]
 particle_flag_disable_z = true
@@ -21,12 +21,12 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [7]
 }
 
 [sub_resource type="Animation" id="Animation_osap4"]
 resource_name = "mistake"
-length = 0.1
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -34,15 +34,15 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 1, 2]
+"values": [11, 7]
 }
 
 [sub_resource type="Animation" id="Animation_pxd2d"]
 resource_name = "perfect"
-length = 0.1
+length = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -50,10 +50,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [0, 3, 4]
+"values": [0, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_osap4"]
@@ -74,8 +74,13 @@ process_material = SubResource("ParticleProcessMaterial_pxd2d")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+scale = Vector2(5, 5)
 texture = ExtResource("2_pxd2d")
-hframes = 5
+hframes = 6
+vframes = 2
+frame = 7
+region_enabled = true
+region_rect = Rect2(47.226017, 63.356728, 96.576706, 32.30603)
 
 [node name="ColorReset" type="Timer" parent="."]
 wait_time = 0.2

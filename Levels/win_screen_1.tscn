@@ -1,7 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://qpjkgofht0ie"]
+[gd_scene load_steps=6 format=3 uid="uid://qpjkgofht0ie"]
 
 [ext_resource type="Script" uid="uid://br2y75vgjnwev" path="res://Levels/win_screen_1.gd" id="1_00kim"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_jpdng"]
+[ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_7jx8e"]
+[ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_k28s7"]
 [ext_resource type="AudioStream" uid="uid://dghyn223ebbvr" path="res://sfx/34. OK.mp3" id="3_mb3k6"]
 
 [node name="WinScreen1" type="Node2D"]
@@ -11,27 +13,41 @@ script = ExtResource("1_00kim")
 
 [node name="Background" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
-position = Vector2(-59, -7)
-scale = Vector2(11.9921875, 6.1171875)
+position = Vector2(4.0000305, -112.37501)
+scale = Vector2(11.96875, 6.80664)
 texture = ExtResource("1_jpdng")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -188.5)
+scale = Vector2(0.06, 0.0395)
+texture = ExtResource("3_7jx8e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(26, -208)
-texture = ExtResource("1_jpdng")
+texture_filter = 1
+position = Vector2(0, -188)
+scale = Vector2(5, 5)
+texture = ExtResource("3_k28s7")
+region_enabled = true
+region_rect = Rect2(240.02298, 111.73097, 47.971436, 48.2417)
 
 [node name="Okay" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(432, 213)
-texture = ExtResource("1_jpdng")
+texture_filter = 1
+position = Vector2(465.00003, 254)
+scale = Vector2(10, 10)
+texture = ExtResource("3_k28s7")
+region_enabled = true
+region_rect = Rect2(240.00438, 16.007437, 16.012894, 9.073965)
 
 [node name="WinText" type="Label" parent="."]
 visible = false
-offset_left = -25.0
+offset_left = -65.0
 offset_top = -12.0
-offset_right = 39.0
+offset_right = 77.0
 offset_bottom = 11.0
-text = "You Win"
+text = "Ehh, Good Enough"
 
 [node name="OkayMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_mb3k6")

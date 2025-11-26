@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://c5c5t6pter7lf"]
+[gd_scene load_steps=6 format=3 uid="uid://c5c5t6pter7lf"]
 
 [ext_resource type="Script" uid="uid://bc08c0n3ve2xd" path="res://Levels/win_screen_2.gd" id="1_7rwuw"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_j6x48"]
 [ext_resource type="AudioStream" uid="uid://l6yybybf5goj" path="res://sfx/35. Superb!.mp3" id="2_8v2uh"]
+[ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_2xeu4"]
+[ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_8lx57"]
 
 [node name="WinScreen2" type="Node2D"]
 script = ExtResource("1_7rwuw")
@@ -15,21 +17,40 @@ position = Vector2(25.250029, 24.250021)
 scale = Vector2(10.871094, 6.855469)
 texture = ExtResource("1_j6x48")
 
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -188)
+scale = Vector2(0.060000002, 0.04)
+texture = ExtResource("3_2xeu4")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(6, -199)
-texture = ExtResource("1_j6x48")
+texture_filter = 1
+position = Vector2(0, -188)
+scale = Vector2(5, 5)
+texture = ExtResource("3_8lx57")
+region_enabled = true
+region_rect = Rect2(175.78561, 111.837585, 48.293137, 48.24208)
 
 [node name="GoodJob" type="Sprite2D" parent="."]
 visible = false
-position = Vector2(450, 212)
-texture = ExtResource("1_j6x48")
+texture_filter = 1
+position = Vector2(365, 254)
+scale = Vector2(10, 10)
+texture = ExtResource("3_8lx57")
+region_enabled = true
+region_rect = Rect2(272.078, 15.983201, 39.026917, 8.995051)
 
 [node name="GoodWinText" type="Label" parent="."]
 visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "You Win, great job"
+offset_left = -112.0
+offset_top = -25.0
+offset_right = 110.0
+offset_bottom = 24.0
+text = "This is only the first peak, 
+get ready for greater heights"
+horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="HappyMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_8v2uh")

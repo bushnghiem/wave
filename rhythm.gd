@@ -5,6 +5,8 @@ signal good
 signal mistake
 signal left
 signal right
+signal end
+signal end_of_tutorial
 signal swap_to_fast_left
 signal swap_to_norm_left
 signal swap_to_fast_right
@@ -41,7 +43,7 @@ const note_length = 1.0
 const short_note_length = 0.5
 const press_window = 0.2
 const perfect_window = 0.1
-const end_screen_delay = 1.0
+const end_screen_delay = 2.0
 
 var curse_message = "WHAT A \nHORRIBLE \nNIGHT TO \nHAVE A \nCURSE"
 
@@ -71,7 +73,9 @@ func _ready() -> void:
 		tutorial_parts(tutorial_part)
 	else:
 		metronome_limit = start_delay * 2 - 1
-		add_notes(100, 0)
+		#add_notes(31, 0)
+		#add_notes(60, 1)
+		add_notes(10, 0)
 		add_end()
 
 func connect_all_npc():
@@ -112,6 +116,9 @@ func _unhandled_input(event):
 		if Input.is_action_pressed("reset"):
 			if !tutorial:
 				reset_button()
+	
+	if Input.is_action_pressed("quit"):
+		quit_button()
 
 func left_button():
 	left.emit()
@@ -158,6 +165,9 @@ func right_button():
 func reset_button():
 	get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
 
+func quit_button():
+	get_tree().change_scene_to_file("res://Levels/title_screen.tscn")
+
 func _process(delta: float) -> void:
 	#print(press_left)
 	clock += delta
@@ -170,6 +180,7 @@ func _process(delta: float) -> void:
 	else:
 		press_now = false
 	if timeline[current_note_index] == "end" and !done:
+		end.emit()
 		get_tree().create_timer(end_screen_delay).timeout.connect(func():
 				print(str(perfects) + " perfects")
 				print(str(goods) + " goods")
@@ -189,9 +200,12 @@ func calculate_score():
 			if tutorial_part < 3:
 				get_tree().change_scene_to_file("res://Levels/pre_tutorial_" + str(tutorial_part + 1) + ".tscn")
 			elif tutorial_part >= 3:
-				get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
+				end_of_tutorial.emit()
+				get_tree().create_timer(end_screen_delay).timeout.connect(func():
+					get_tree().change_scene_to_file("res://Levels/game.tscn")
+				);
 		else:
-			if perfect_ratio == 1:
+			if perfect_ratio == 1 and misses == 0:
 				#print("perfect victory")
 				get_tree().change_scene_to_file("res://Levels/win_screen_3.tscn")
 			elif perfect_ratio >= good_win_ratio:
@@ -218,7 +232,7 @@ func add_notes(new_notes, type):
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index + 1]
 				note_press_time += note_length
-				#print(note_press_time)
+				print(note_press_time)
 				$AudioStreamPlayer.play()
 				if (note_holder1 == "normal" and note_holder2 == "short"):
 					$AudioStreamPlayer2.play()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcslpdmtwmxlx"]
+[gd_scene load_steps=6 format=3 uid="uid://bcslpdmtwmxlx"]
 
 [ext_resource type="Script" uid="uid://bxme7gv25g8xh" path="res://Levels/tutorialpart_3.gd" id="1_dupb7"]
 [ext_resource type="PackedScene" uid="uid://3ei7oalhajg2" path="res://rhythm.tscn" id="2_om56g"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_vgvll"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_88ycm"]
+[ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="5_7dgxm"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dupb7")
@@ -18,6 +19,25 @@ script = ExtResource("3_vgvll")
 [node name="Particle" parent="." instance=ExtResource("4_88ycm")]
 position = Vector2(500, 0)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+visible = false
+offset_left = 440.0
+offset_top = 121.0
+offset_right = 712.0
+offset_bottom = 144.0
+text = "Alright, your ready for the real deal"
+horizontal_alignment = 1
+
+[node name="Blackout" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(717, 331)
+scale = Vector2(23.578127, 15.910156)
+texture = ExtResource("5_7dgxm")
+
+[connection signal="end_of_tutorial" from="Rhythm" to="." method="_on_rhythm_end_of_tutorial"]
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
 [connection signal="mistake" from="Rhythm" to="Particle" method="mistake"]
 [connection signal="perfect" from="Rhythm" to="Particle" method="perfect"]

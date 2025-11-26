@@ -1,23 +1,395 @@
-[gd_scene load_steps=2 format=3 uid="uid://byl0qxtev3fo6"]
+[gd_scene load_steps=7 format=3 uid="uid://byl0qxtev3fo6"]
 
 [ext_resource type="Script" uid="uid://3y2l17mk86uc" path="res://Levels/title_screen.gd" id="1_frj5v"]
+[ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="2_i1ewc"]
+[ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_vn2h1"]
+
+[sub_resource type="Animation" id="Animation_vn2h1"]
+resource_name = "title"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedWave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1579, 200), Vector2(579, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueWave:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(548, -600), Vector2(548, 200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GreenWave:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-482.25, 200.25), Vector2(517.75, 200.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Title:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Button:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Button2:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_g5eml"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RedWave:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(579, 200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BlueWave:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(548, 200)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GreenWave:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(517.75, 200.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Title:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Button:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Button2:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Button2:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Button:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Label:visible")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Label2:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_17dc4"]
+_data = {
+&"RESET": SubResource("Animation_g5eml"),
+&"title": SubResource("Animation_vn2h1")
+}
 
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_frj5v")
 
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(554, 326)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_i1ewc")
+
 [node name="Button" type="Button" parent="."]
-offset_left = 532.0
-offset_top = 273.0
-offset_right = 579.0
-offset_bottom = 304.0
+visible = false
+offset_left = 363.0
+offset_top = 394.0
+offset_right = 410.0
+offset_bottom = 425.0
+disabled = true
 text = "PLAY"
 
 [node name="Button2" type="Button" parent="."]
-offset_left = 521.0
-offset_top = 329.0
-offset_right = 590.0
-offset_bottom = 360.0
+visible = false
+offset_left = 763.0
+offset_top = 397.0
+offset_right = 832.0
+offset_bottom = 428.0
+disabled = true
 text = "Tutorial"
+
+[node name="RedWave" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(579, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.703674, 191.71738, 73.65483, 27.530472)
+
+[node name="RedWave2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(39, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.703674, 191.71738, 73.65483, 27.530472)
+
+[node name="RedWave3" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1119.0001, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.703674, 191.71738, 73.65483, 27.530472)
+
+[node name="BlueWave" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(548, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.99046, 256.11316, 72.947754, 26.905151)
+
+[node name="BlueWave2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(8, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.99046, 256.11316, 72.947754, 26.905151)
+
+[node name="BlueWave3" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1088.0001, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.99046, 256.11316, 72.947754, 26.905151)
+
+[node name="GreenWave" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(517.75, 200.25)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.92111, 223.99081, 73.095276, 27.111465)
+
+[node name="GreenWave2" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(-22.25, 200.25)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.92111, 223.99081, 73.095276, 27.111465)
+
+[node name="GreenWave3" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(1046.7501, 200.25)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(111.92111, 223.99081, 73.095276, 27.111465)
+
+[node name="Title" type="Sprite2D" parent="."]
+visible = false
+texture_filter = 1
+position = Vector2(568, 200)
+scale = Vector2(7.5, 7.5)
+texture = ExtResource("3_vn2h1")
+region_enabled = true
+region_rect = Rect2(15.972098, 240.98006, 76.039925, 9.054886)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_17dc4")
+}
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = 355.0
+offset_top = 358.0
+offset_right = 412.0
+offset_bottom = 381.0
+text = "Press A"
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+offset_left = 772.0
+offset_top = 366.0
+offset_right = 830.0
+offset_bottom = 389.0
+text = "Press D"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

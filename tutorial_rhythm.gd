@@ -15,6 +15,8 @@ func _unhandled_input(event):
 		right_button()
 	if Input.is_action_pressed("reset"):
 		reset_button()
+	if Input.is_action_pressed("quit"):
+		quit_button()
 
 
 func left_button():
@@ -43,6 +45,9 @@ func reset_button():
 	if get_tree().paused:
 		get_tree().paused = false
 	get_tree().change_scene_to_file("res://Levels/pre_tutorial_1.tscn")
+
+func quit_button():
+	get_tree().change_scene_to_file("res://Levels/title_screen.tscn")
 
 func _on_particle_tutorial_left() -> void:
 	press_left_now = true
