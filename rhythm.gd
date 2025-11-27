@@ -33,7 +33,7 @@ var hit_ratio = 0.0
 var perfect_ratio = 0.0
 @export var start_delay = 2.0
 var metronome_count = 0
-var metronome_limit = 0
+@export var metronome_limit = 0
 @export var auto_play = false
 @export var tutorial = false
 @export var tutorial_part = 1
@@ -43,7 +43,7 @@ const note_length = 1.0
 const short_note_length = 0.5
 const press_window = 0.2
 const perfect_window = 0.1
-const end_screen_delay = 2.0
+const end_screen_delay = 4.0
 
 var curse_message = "WHAT A \nHORRIBLE \nNIGHT TO \nHAVE A \nCURSE"
 
@@ -57,8 +57,8 @@ func has_letters(your_string):
 
 func _ready() -> void:
 	connect_all_npc()
-	if tutorial_part != 2:
-		$AudioStreamPlayer3.play()
+	#if tutorial_part != 2:
+		#$AudioStreamPlayer3.play()
 	note_press_time += start_delay
 	done = true
 	if tutorial_part != 2:
@@ -72,10 +72,10 @@ func _ready() -> void:
 	if tutorial:
 		tutorial_parts(tutorial_part)
 	else:
-		metronome_limit = start_delay * 2 - 1
+		#metronome_limit = start_delay * 2 - 1
 		#add_notes(31, 0)
 		#add_notes(60, 1)
-		add_notes(10, 0)
+		add_notes(110, 0)
 		add_end()
 
 func connect_all_npc():
@@ -88,18 +88,18 @@ func connect_all_npc():
 
 func tutorial_parts(part):
 	if part == 1:
-		metronome_limit = 100000
+		#metronome_limit = 100000
 		add_notes(4, 0)
 		add_end()
 	elif part == 2:
-		metronome_limit = 100000
+		#metronome_limit = 100000
 		$Metronome.stop()
 		$Metronome.wait_time = 0.5
 		$Metronome.start()
 		add_notes(4, 1)
 		add_end()
 	elif part == 3:
-		metronome_limit = 100000
+		#metronome_limit = 100000
 		add_notes(4, 0)
 		add_notes(4, 1)
 		add_notes(4, 0)

@@ -9,9 +9,9 @@ var y_speed = -500
 
 func _ready() -> void:
 	#$AsteroidSpawner.spawn_asteroid(0, 1, 20)
-	get_tree().create_timer(1).timeout.connect(func():
-		$Song.play()
-	);
+	#get_tree().create_timer(1).timeout.connect(func():
+	$Song.play()
+	#);
 
 func _process(delta: float) -> void:
 	$Blackout.global_position.y += y_speed*delta

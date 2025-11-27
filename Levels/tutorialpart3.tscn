@@ -19,6 +19,7 @@ texture = ExtResource("2_b1r17")
 script = ExtResource("3_vgrfa")
 
 [node name="Rhythm" parent="." instance=ExtResource("2_om56g")]
+metronome_limit = 100000
 tutorial = true
 tutorial_part = 3
 
