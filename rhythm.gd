@@ -43,7 +43,7 @@ const note_length = 1.0
 const short_note_length = 0.5
 const press_window = 0.2
 const perfect_window = 0.1
-const end_screen_delay = 4.0
+@export var end_screen_delay = 4.0
 
 var curse_message = "WHAT A \nHORRIBLE \nNIGHT TO \nHAVE A \nCURSE"
 
@@ -72,10 +72,52 @@ func _ready() -> void:
 	if tutorial:
 		tutorial_parts(tutorial_part)
 	else:
-		#metronome_limit = start_delay * 2 - 1
-		#add_notes(31, 0)
-		#add_notes(60, 1)
-		add_notes(110, 0)
+		#Main level
+		add_notes(16, 0) #20
+		add_notes(4, 1) #22
+		add_notes(2, 0) #24
+		add_notes(4, 1) #26
+		add_notes(2, 0) #28
+		add_notes(4, 1) #30
+		add_notes(2, 0) #32
+		add_notes(4, 1) #34
+		add_notes(18, 0) #52
+		add_notes(2, 1) #53
+		add_notes(1, 0) #54
+		add_notes(2, 1) #55
+		add_notes(1, 0) #56
+		add_notes(2, 1) #57
+		add_notes(1, 0) #58
+		add_notes(2, 1) #59
+		add_notes(1, 0) #60
+		add_notes(2, 1) #61
+		add_notes(1, 0) #62
+		add_notes(2, 1) #63
+		add_notes(1, 0) #64
+		add_notes(2, 1) #65
+		add_notes(1, 0) #66
+		add_notes(4, 0) #70
+		add_notes(28, 1) #84
+		add_notes(16, 0) #100
+		add_notes(2, 1) #101
+		add_notes(1, 0) #102
+		add_notes(2, 1) #103
+		add_notes(1, 0) #104
+		add_notes(2, 1) #105
+		add_notes(1, 0) #106
+		add_notes(2, 1) #107
+		add_notes(1, 0) #108
+		add_notes(2, 1) #109
+		add_notes(1, 0) #110
+		add_notes(2, 1) #112
+		add_notes(1, 0) #113
+		add_notes(2, 1) #114
+		add_notes(1, 0) #115
+		add_notes(2, 1) #116
+		add_notes(1, 0) #117
+		add_notes(2, 1) #118
+		add_notes(1, 0) #119
+		add_notes(6, 0) #125
 		add_end()
 
 func connect_all_npc():

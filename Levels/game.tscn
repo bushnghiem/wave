@@ -17,6 +17,7 @@ script = ExtResource("1_fc0e3")
 [node name="Rhythm" parent="." instance=ExtResource("2_7jktm")]
 start_delay = 4.0
 metronome_limit = 4
+auto_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false
@@ -65,7 +66,6 @@ stream = ExtResource("6_xfsjo")
 position = Vector2(0, -1500)
 
 [node name="Asteroid_Spawn" type="Timer" parent="."]
-autostart = true
 
 [node name="Blackout" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 1)
@@ -73,6 +73,26 @@ z_index = 2
 position = Vector2(-120.50049, -697.50037)
 scale = Vector2(127.242195, 76.41406)
 texture = ExtResource("8_xfsjo")
+
+[node name="AsteroidStart" type="Timer" parent="."]
+wait_time = 35.0
+one_shot = true
+autostart = true
+
+[node name="AsteroidStop" type="Timer" parent="."]
+wait_time = 110.0
+one_shot = true
+autostart = true
+
+[node name="SpinStart" type="Timer" parent="."]
+wait_time = 84.0
+one_shot = true
+autostart = true
+
+[node name="ZoomOutTimer" type="Timer" parent="."]
+wait_time = 116.0
+one_shot = true
+autostart = true
 
 [connection signal="end" from="Rhythm" to="." method="_on_rhythm_end"]
 [connection signal="good" from="Rhythm" to="Particle" method="good"]
@@ -83,3 +103,7 @@ texture = ExtResource("8_xfsjo")
 [connection signal="swap_to_norm_left" from="Rhythm" to="Particle" method="swap_to_norm_left"]
 [connection signal="swap_to_norm_right" from="Rhythm" to="Particle" method="swap_to_norm_right"]
 [connection signal="timeout" from="Asteroid_Spawn" to="." method="_on_asteroid_spawn_timeout"]
+[connection signal="timeout" from="AsteroidStart" to="." method="_on_asteroid_start_timeout"]
+[connection signal="timeout" from="AsteroidStop" to="." method="_on_asteroid_stop_timeout"]
+[connection signal="timeout" from="SpinStart" to="." method="_on_spin_start_timeout"]
+[connection signal="timeout" from="ZoomOutTimer" to="." method="_on_zoom_out_timer_timeout"]

@@ -8,13 +8,15 @@ func _process(delta: float) -> void:
 
 func spawn_asteroid(x_pos, y_off, size, rot, z):
 	var rock = asteroid.instantiate()
-
-	# Choose a random location on the SpawnPath.
-	# We store the reference to the SpawnLocation node.
+	var roll = randi_range(1, 50)
+	
+	if roll == 1:
+		rock.rocket()
+	elif roll == 2:
+		rock.satelite()
+	
 	var mob_spawn_location = Vector2(x_pos, global_position.y + y_off)
-	# And give it a random offset.
 	rock.setup(mob_spawn_location, rot, Vector2(size, size), z)
-	# Spawn the mob by adding it to the Main scene.
 	get_tree().root.add_child(rock)
 
 func spawn_alot(number):

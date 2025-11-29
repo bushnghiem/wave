@@ -108,22 +108,22 @@ func fast_path2():
 func swap_to_norm_left():
 	time_counter1 = 0
 	type = 0.25
-	print("normal left now")
+	#print("normal left now")
 
 func swap_to_norm_right():
 	time_counter3 = 0
 	type = 0.75
-	print("normal right now")
+	#print("normal right now")
 
 func swap_to_fast_left():
 	time_counter2 = 0
 	type = 1.25
-	print("fast left now")
+	#print("fast left now")
 
 func swap_to_fast_right():
 	time_counter4 = 0
 	type = 1.75
-	print("fast right now")
+	#print("fast right now")
 
 
 func mistake():

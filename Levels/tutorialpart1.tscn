@@ -18,9 +18,9 @@ texture = ExtResource("5_bxlib")
 script = ExtResource("3_euqou")
 
 [node name="Rhythm" parent="." instance=ExtResource("2_gtjdh")]
-start_delay = 2.0
 metronome_limit = 10000
 tutorial = true
+end_screen_delay = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("3_eo40m")

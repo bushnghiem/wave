@@ -153,6 +153,34 @@ tracks/11/keys = {
 "values": [1.3962634]
 }
 
+[sub_resource type="Animation" id="Animation_i7t4j"]
+resource_name = "rocket"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 15, 25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(67, -85), Vector2(169.00002, 732.00006), Vector2(898.99994, 729.00006), Vector2(899, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15.066667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.3962634, 4.71238898038469]
+}
+
 [sub_resource type="Animation" id="Animation_vn2h1"]
 resource_name = "title"
 length = 4.0
@@ -277,39 +305,38 @@ tracks/9/keys = {
 "values": [false, true]
 }
 
-[sub_resource type="Animation" id="Animation_i7t4j"]
-resource_name = "rocket"
-length = 25.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Rocket:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 10, 15, 25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(67, -85), Vector2(169.00002, 732.00006), Vector2(898.99994, 729.00006), Vector2(899, -200)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Rocket:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 15.066667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [1.3962634, 4.71238898038469]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17dc4"]
 _data = {
 &"RESET": SubResource("Animation_g5eml"),
 &"rocket": SubResource("Animation_i7t4j"),
 &"title": SubResource("Animation_vn2h1")
+}
+
+[sub_resource type="Animation" id="Animation_1lkgl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Satellite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-145.99976, 694.99994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Satellite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_17dc4"]
@@ -338,33 +365,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 6.1086523819801535]
-}
-
-[sub_resource type="Animation" id="Animation_1lkgl"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Satellite:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-145.99976, 694.99994)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Satellite:rotation")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1lkgl"]
