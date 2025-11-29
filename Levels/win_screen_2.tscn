@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://bc08c0n3ve2xd" path="res://Levels/win_screen_2.gd" id="1_7rwuw"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_j6x48"]
-[ext_resource type="AudioStream" uid="uid://l6yybybf5goj" path="res://sfx/35. Superb!.mp3" id="2_8v2uh"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_2xeu4"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_8lx57"]
+[ext_resource type="AudioStream" uid="uid://dm0e3x4r44qgi" path="res://sfx/end_theme_good.mp3" id="5_2xeu4"]
 
 [node name="WinScreen2" type="Node2D"]
 script = ExtResource("1_7rwuw")
@@ -53,7 +53,7 @@ horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="HappyMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_8v2uh")
+stream = ExtResource("5_2xeu4")
 
 [node name="Timer" type="Timer" parent="."]
 

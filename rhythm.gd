@@ -122,6 +122,8 @@ func _unhandled_input(event):
 
 func left_button():
 	left.emit()
+	#print(press_now)
+	#print("pressed left")
 	if press_now and press_tracker[current_note_index] == "blank" and press_left:
 		if perfect_now:
 			press_tracker[current_note_index] = "perfect"
@@ -142,6 +144,8 @@ func left_button():
 		misses += 1
 
 func right_button():
+	#print("pressed right")
+	#print(press_now)
 	right.emit()
 	if press_now and press_tracker[current_note_index] == "blank" and !press_left:
 		if perfect_now:
@@ -169,23 +173,29 @@ func quit_button():
 	get_tree().change_scene_to_file("res://Levels/title_screen.tscn")
 
 func _process(delta: float) -> void:
-	#print(press_left)
+	#print(clock)
 	clock += delta
 	if (clock > (note_press_time - press_window)) and (clock < (note_press_time + press_window)):
+		
+		#print("press now")
 		press_now = true
 		if (clock > (note_press_time - perfect_window)) and (clock < (note_press_time + perfect_window)):
 			perfect_now = true
 		else:
 			perfect_now = false
 	else:
+		#if (clock < (note_press_time - press_window)):
+			#print("dont press now: " + str(clock) + " < " + str(note_press_time - press_window))
+		#elif (clock > (note_press_time + press_window)):
+			#print("dont press now: " + str(clock) + " > " + str(note_press_time + press_window))
 		press_now = false
 	if timeline[current_note_index] == "end" and !done:
 		end.emit()
 		get_tree().create_timer(end_screen_delay).timeout.connect(func():
-				print(str(perfects) + " perfects")
-				print(str(goods) + " goods")
-				print(str(hits) + " hits")
-				print(str(misses) + " misses")
+				#print(str(perfects) + " perfects")
+				#print(str(goods) + " goods")
+				#print(str(hits) + " hits")
+				#print(str(misses) + " misses")
 				calculate_score()
 				);
 		done = true
@@ -228,19 +238,21 @@ func add_notes(new_notes, type):
 	note_count += new_notes
 	if type == 0:
 		for n in new_notes:
+			get_tree().create_timer(start_delay + song_length + note_length - press_window).timeout.connect(func():
+				note_press_time += note_length
+				#print(note_press_time)
+			);
 			get_tree().create_timer(start_delay + song_length + note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index + 1]
-				note_press_time += note_length
-				print(note_press_time)
 				$AudioStreamPlayer.play()
 				if (note_holder1 == "normal" and note_holder2 == "short"):
 					$AudioStreamPlayer2.play()
 					if press_left:
-						print("press_left is true right now, thus you will press left and should swap to fast right")
+						#print("press_left is true right now, thus you will press left and should swap to fast right")
 						swap_to_fast_right.emit()
 					else:
-						print("press_left is false right now, thus you will press right and should swap to fast left")
+						#print("press_left is false right now, thus you will press right and should swap to fast left")
 						swap_to_fast_left.emit()
 					if tutorial and tutorial_part == 3:
 						$AudioStreamPlayer3.play()
@@ -248,7 +260,7 @@ func add_notes(new_notes, type):
 						$Metronome.wait_time = 0.5
 						$Metronome.start()
 				);
-			get_tree().create_timer(start_delay + song_length + note_length + perfect_window / 2).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + note_length - perfect_window / 2).timeout.connect(func():
 				if auto_play:
 					if press_left:
 						left_button()
@@ -269,19 +281,21 @@ func add_notes(new_notes, type):
 			press_tracker.append("blank")
 	else:
 		for n in new_notes:
+			get_tree().create_timer(start_delay + song_length + short_note_length - press_window).timeout.connect(func():
+				note_press_time += short_note_length
+				#print(note_press_time)
+			);
 			get_tree().create_timer(start_delay + song_length + short_note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index+1]
-				note_press_time += short_note_length
-				print(note_press_time)
 				$AudioStreamPlayer.play()
 				if (note_holder1 == "short" and note_holder2 == "normal"):
 					$AudioStreamPlayer2.play()
 					if press_left:
-						print("press_left is true right now, thus you will press left and should swap to normal right")
+						#print("press_left is true right now, thus you will press left and should swap to normal right")
 						swap_to_norm_right.emit()
 					else:
-						print("press_left is false right now, thus you will press right and should swap to normal left")
+						#print("press_left is false right now, thus you will press right and should swap to normal left")
 						swap_to_norm_left.emit()
 					if tutorial and tutorial_part == 3:
 						$AudioStreamPlayer3.play()
@@ -289,7 +303,7 @@ func add_notes(new_notes, type):
 						$Metronome.wait_time = 1
 						$Metronome.start()
 				);
-			get_tree().create_timer(start_delay + song_length + short_note_length + perfect_window / 2).timeout.connect(func():
+			get_tree().create_timer(start_delay + song_length + short_note_length - perfect_window / 2).timeout.connect(func():
 				if auto_play:
 					if press_left:
 						left_button()
@@ -301,7 +315,7 @@ func add_notes(new_notes, type):
 				if (note_holder == "blank"):
 					press_tracker[current_note_index] = "bad"
 					mistake.emit()
-					print("miss")
+					#print("miss")
 					misses += 1
 				press_left = !press_left
 				current_note_index += 1

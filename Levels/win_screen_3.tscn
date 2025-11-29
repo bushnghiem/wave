@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b4dt3c4iu2mrb"]
+[gd_scene load_steps=7 format=3 uid="uid://b4dt3c4iu2mrb"]
 
 [ext_resource type="Script" uid="uid://cyfd6rls7l280" path="res://Levels/win_screen_3.gd" id="1_3rlj8"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_poogy"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_btmyp"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_s07hx"]
-[ext_resource type="AudioStream" uid="uid://cuxj7qis1yw3r" path="res://sfx/37. Perfect.mp3" id="3_ym3u7"]
+[ext_resource type="Texture2D" uid="uid://caf4gx47i0qir" path="res://2Dart/concepts2.png" id="5_km7rn"]
+[ext_resource type="AudioStream" uid="uid://bdfqjyp3hhkkk" path="res://sfx/end_theme_perfect.mp3" id="5_s07hx"]
 
 [node name="WinScreen3" type="Node2D"]
 script = ExtResource("1_3rlj8")
@@ -35,11 +36,11 @@ region_rect = Rect2(176.03468, 48.0809, 47.877213, 47.873837)
 [node name="Perfection" type="Sprite2D" parent="."]
 visible = false
 texture_filter = 1
-position = Vector2(342, 252)
+position = Vector2(236, 252)
 scale = Vector2(10, 10)
-texture = ExtResource("3_btmyp")
+texture = ExtResource("5_km7rn")
 region_enabled = true
-region_rect = Rect2(239.96011, 31.888668, 42.23654, 9.226711)
+region_rect = Rect2(208.78607, 31.888668, 63.305786, 9.226711)
 
 [node name="PerfectWinText" type="Label" parent="."]
 visible = false
@@ -52,7 +53,7 @@ a wave like no other!"
 horizontal_alignment = 1
 
 [node name="PerfectWinSong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ym3u7")
+stream = ExtResource("5_s07hx")
 
 [node name="Timer" type="Timer" parent="."]
 

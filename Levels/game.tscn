@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_ryrav"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_eow3j"]
 [ext_resource type="PackedScene" uid="uid://bmprx52xq7sc6" path="res://background.tscn" id="5_uda3f"]
-[ext_resource type="AudioStream" uid="uid://b57qlngf2mmwy" path="res://sfx/rhythm_game_main_theme.mp3" id="6_xfsjo"]
+[ext_resource type="AudioStream" uid="uid://cykc8syht5q4t" path="res://sfx/main_theme.mp3" id="6_xfsjo"]
 [ext_resource type="PackedScene" uid="uid://xe44h23gycla" path="res://asteroid_spawner.tscn" id="7_ev4ff"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="8_xfsjo"]
 
@@ -17,7 +17,6 @@ script = ExtResource("1_fc0e3")
 [node name="Rhythm" parent="." instance=ExtResource("2_7jktm")]
 start_delay = 4.0
 metronome_limit = 4
-auto_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

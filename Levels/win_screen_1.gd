@@ -35,8 +35,8 @@ func _on_timer_timeout() -> void:
 	if counter == 1:
 		$Sprite2D.visible = true
 		$Sprite2D2.visible = true
-	elif counter == 2:
-		$WinText.visible = true
 	elif counter == 3:
+		$WinText.visible = true
+	elif counter == 4:
 		$Okay.visible = true
 		resetable = true

@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bcfm2i5m7f86e" path="res://Levels/fail_screen.gd" id="1_ondbh"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_h3ary"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_ndwvy"]
-[ext_resource type="AudioStream" uid="uid://cwd4jl5lawqqn" path="res://sfx/36. Try Again.mp3" id="3_ondbh"]
+[ext_resource type="AudioStream" uid="uid://b2lm8edtwx72c" path="res://sfx/game_over.mp3" id="5_h3ary"]
 
 [node name="FailScreen" type="Node2D"]
 script = ExtResource("1_ondbh")
@@ -50,7 +50,7 @@ offset_bottom = 12.0
 text = "Waves do die?"
 
 [node name="FailureSong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_ondbh")
+stream = ExtResource("5_h3ary")
 
 [node name="Timer" type="Timer" parent="."]
 

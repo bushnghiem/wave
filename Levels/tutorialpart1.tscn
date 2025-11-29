@@ -18,6 +18,7 @@ texture = ExtResource("5_bxlib")
 script = ExtResource("3_euqou")
 
 [node name="Rhythm" parent="." instance=ExtResource("2_gtjdh")]
+start_delay = 2.0
 metronome_limit = 10000
 tutorial = true
 

@@ -1,8 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://byl0qxtev3fo6"]
+[gd_scene load_steps=13 format=3 uid="uid://byl0qxtev3fo6"]
 
 [ext_resource type="Script" uid="uid://3y2l17mk86uc" path="res://Levels/title_screen.gd" id="1_frj5v"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="2_i1ewc"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_vn2h1"]
+[ext_resource type="Texture2D" uid="uid://caf4gx47i0qir" path="res://2Dart/concepts2.png" id="4_17dc4"]
+[ext_resource type="AudioStream" uid="uid://budqnqce8741w" path="res://sfx/title_theme.mp3" id="4_g5eml"]
 
 [sub_resource type="Animation" id="Animation_g5eml"]
 length = 0.001
@@ -126,10 +128,34 @@ tracks/9/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Rocket:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(67, -85)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Rocket:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.3962634]
+}
 
 [sub_resource type="Animation" id="Animation_vn2h1"]
 resource_name = "title"
-length = 1.5
+length = 4.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -137,7 +163,7 @@ tracks/0/path = NodePath("RedWave:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0, 0.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1579, 200), Vector2(579, 200)]
@@ -149,7 +175,7 @@ tracks/1/path = NodePath("BlueWave:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(548, -600), Vector2(548, 200)]
@@ -161,7 +187,7 @@ tracks/2/path = NodePath("GreenWave:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
+"times": PackedFloat32Array(0.75, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-482.25, 200.25), Vector2(517.75, 200.25)]
@@ -173,7 +199,7 @@ tracks/3/path = NodePath("Title:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -185,7 +211,7 @@ tracks/4/path = NodePath("Button:visible")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -197,7 +223,7 @@ tracks/5/path = NodePath("Button2:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -209,7 +235,7 @@ tracks/6/path = NodePath("Button:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -221,7 +247,7 @@ tracks/7/path = NodePath("Button2:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -233,7 +259,7 @@ tracks/8/path = NodePath("Label:visible")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.25),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -245,16 +271,106 @@ tracks/9/path = NodePath("Label2:visible")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 1.5),
+"times": PackedFloat32Array(0, 1.6),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
 
+[sub_resource type="Animation" id="Animation_i7t4j"]
+resource_name = "rocket"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rocket:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10, 15, 25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(67, -85), Vector2(169.00002, 732.00006), Vector2(898.99994, 729.00006), Vector2(899, -200)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rocket:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 15.066667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.3962634, 4.71238898038469]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_17dc4"]
 _data = {
 &"RESET": SubResource("Animation_g5eml"),
+&"rocket": SubResource("Animation_i7t4j"),
 &"title": SubResource("Animation_vn2h1")
+}
+
+[sub_resource type="Animation" id="Animation_17dc4"]
+resource_name = "satellitespin"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Satellite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-145.99976, 694.99994), Vector2(1347.9999, 372.0001)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Satellite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 19.933332),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 6.1086523819801535]
+}
+
+[sub_resource type="Animation" id="Animation_1lkgl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Satellite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-145.99976, 694.99994)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Satellite:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1lkgl"]
+_data = {
+&"RESET": SubResource("Animation_1lkgl"),
+&"satellitespin": SubResource("Animation_17dc4")
 }
 
 [node name="TitleScreen" type="Node2D"]
@@ -264,6 +380,32 @@ script = ExtResource("1_frj5v")
 position = Vector2(554, 326)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_i1ewc")
+
+[node name="Sun" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1056, 163)
+rotation = 0.34906584
+scale = Vector2(2, 2)
+texture = ExtResource("4_17dc4")
+region_enabled = true
+region_rect = Rect2(126.86499, 111.05434, 34.179, 34.036026)
+
+[node name="Satellite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-145.99976, 694.99994)
+scale = Vector2(5, 5)
+texture = ExtResource("4_17dc4")
+region_enabled = true
+region_rect = Rect2(94.87312, 33.522465, 54.821884, 23.232449)
+
+[node name="Rocket" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(67, -85)
+rotation = 1.3962634
+scale = Vector2(5, 5)
+texture = ExtResource("4_17dc4")
+region_enabled = true
+region_rect = Rect2(106.74446, 17.386377, 23.16681, 15.033785)
 
 [node name="Button" type="Button" parent="."]
 visible = false
@@ -375,6 +517,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_17dc4")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1lkgl")
+}
+
 [node name="Label" type="Label" parent="."]
 visible = false
 offset_left = 355.0
@@ -391,5 +538,14 @@ offset_right = 830.0
 offset_bottom = 389.0
 text = "Press D"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g5eml")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_g5eml")
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="AudioStreamPlayer2" to="." method="_on_audio_stream_player_2_finished"]
