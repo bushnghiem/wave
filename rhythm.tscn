@@ -10,11 +10,11 @@ script = ExtResource("1_lg58s")
 
 [node name="Faster" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ecpmg")
-volume_db = 3.0
+volume_db = 5.0
 
 [node name="Slower" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_ecpmg")
-volume_db = 3.0
+volume_db = 5.0
 
 [node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ecpmg")
