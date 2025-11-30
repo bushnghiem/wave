@@ -1,11 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://byl0qxtev3fo6"]
+[gd_scene load_steps=22 format=3 uid="uid://byl0qxtev3fo6"]
 
 [ext_resource type="Script" uid="uid://3y2l17mk86uc" path="res://Levels/title_screen.gd" id="1_frj5v"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="2_i1ewc"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_vn2h1"]
 [ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="4_1lkgl"]
 [ext_resource type="Texture2D" uid="uid://caf4gx47i0qir" path="res://2Dart/concepts2.png" id="4_17dc4"]
-[ext_resource type="AudioStream" uid="uid://budqnqce8741w" path="res://sfx/title_theme.mp3" id="4_g5eml"]
+[ext_resource type="AudioStream" uid="uid://c0el3ein1jp8u" path="res://finalsongs/title_theme_intro+main.wav" id="6_i7t4j"]
+[ext_resource type="AudioStream" uid="uid://c6xkldex1jnnt" path="res://finalsongs/title_theme_loop.wav" id="7_i7t4j"]
+[ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="8_ixmql"]
 
 [sub_resource type="Animation" id="Animation_g5eml"]
 length = 0.001
@@ -374,6 +376,102 @@ _data = {
 &"satellitespin": SubResource("Animation_17dc4")
 }
 
+[sub_resource type="Animation" id="Animation_ixmql"]
+resource_name = "blackout"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6aq0y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blackout:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aq0y"]
+_data = {
+&"RESET": SubResource("Animation_6aq0y"),
+&"blackout": SubResource("Animation_ixmql")
+}
+
+[sub_resource type="Animation" id="Animation_tv3x3"]
+resource_name = "volume"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_574tv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_574tv"]
+_data = {
+&"RESET": SubResource("Animation_574tv"),
+&"volume": SubResource("Animation_tv3x3")
+}
+
 [node name="TitleScreen" type="Node2D"]
 script = ExtResource("1_frj5v")
 
@@ -551,10 +649,27 @@ theme_override_font_sizes/font_size = 25
 text = "Press D"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_g5eml")
+stream = ExtResource("6_i7t4j")
 
 [node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_g5eml")
+stream = ExtResource("7_i7t4j")
+
+[node name="Blackout" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+self_modulate = Color(1, 1, 1, 0)
+position = Vector2(552.00006, 354)
+scale = Vector2(23.578127, 15.910156)
+texture = ExtResource("8_ixmql")
+
+[node name="AnimationPlayer3" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6aq0y")
+}
+
+[node name="AnimationPlayer4" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_574tv")
+}
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

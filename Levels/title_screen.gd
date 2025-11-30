@@ -1,4 +1,5 @@
 extends Node2D
+var blackout = false
 
 func _unhandled_input(event):
 	if Input.is_action_pressed("left"):
@@ -20,19 +21,31 @@ func _ready() -> void:
 	$AudioStreamPlayer.play()
 
 func _on_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
+	if !blackout:
+		$AnimationPlayer4.play("volume")
+		$AnimationPlayer3.play("blackout")
+		get_tree().create_timer(1.5).timeout.connect(func():
+			get_tree().change_scene_to_file("res://Levels/game.tscn")
+			);
+		blackout = true
 
 
 func _on_button_2_pressed() -> void:
-	get_tree().change_scene_to_file("res://Levels/tutorialpart_0.tscn")
+	if !blackout:
+		$AnimationPlayer4.play("volume")
+		$AnimationPlayer3.play("blackout")
+		get_tree().create_timer(1.5).timeout.connect(func():
+			get_tree().change_scene_to_file("res://Levels/tutorialpart_0.tscn")
+			);
+		blackout = true
 
 
 func _on_audio_stream_player_finished() -> void:
-	$AudioStreamPlayer2.play(4.00)
+	$AudioStreamPlayer2.play()
 
 
 func _on_audio_stream_player_2_finished() -> void:
-	$AudioStreamPlayer2.play(4.00)
+	$AudioStreamPlayer2.play()
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:

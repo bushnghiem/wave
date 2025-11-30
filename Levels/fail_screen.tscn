@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://s45ybjskmfd8"]
+[gd_scene load_steps=7 format=3 uid="uid://s45ybjskmfd8"]
 
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_hbaie"]
 [ext_resource type="Script" uid="uid://bcfm2i5m7f86e" path="res://Levels/fail_screen.gd" id="1_ondbh"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_h3ary"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_ndwvy"]
 [ext_resource type="AudioStream" uid="uid://b2lm8edtwx72c" path="res://sfx/game_over.mp3" id="5_h3ary"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="5_w4tfv"]
 
 [node name="FailScreen" type="Node2D"]
 script = ExtResource("1_ondbh")
@@ -43,10 +44,12 @@ region_rect = Rect2(287.96802, 31.94968, 36.003204, 9.077076)
 
 [node name="LossText" type="Label" parent="."]
 visible = false
-offset_left = -45.0
-offset_top = -11.0
-offset_right = 35.0
-offset_bottom = 12.0
+offset_left = -78.0
+offset_top = -10.0
+offset_right = 70.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("5_w4tfv")
+theme_override_font_sizes/font_size = 25
 text = "Waves do die?"
 
 [node name="FailureSong" type="AudioStreamPlayer" parent="."]

@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://b4dt3c4iu2mrb"]
+[gd_scene load_steps=8 format=3 uid="uid://b4dt3c4iu2mrb"]
 
 [ext_resource type="Script" uid="uid://cyfd6rls7l280" path="res://Levels/win_screen_3.gd" id="1_3rlj8"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_poogy"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_btmyp"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_s07hx"]
 [ext_resource type="Texture2D" uid="uid://caf4gx47i0qir" path="res://2Dart/concepts2.png" id="5_km7rn"]
-[ext_resource type="AudioStream" uid="uid://bdfqjyp3hhkkk" path="res://sfx/end_theme_perfect.mp3" id="5_s07hx"]
+[ext_resource type="AudioStream" uid="uid://cgu1vbpchh2xe" path="res://finalsongs/end_theme_perfect.wav" id="6_km7rn"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="6_qq55v"]
 
 [node name="WinScreen3" type="Node2D"]
 script = ExtResource("1_3rlj8")
@@ -44,16 +45,18 @@ region_rect = Rect2(208.78607, 31.888668, 63.305786, 9.226711)
 
 [node name="PerfectWinText" type="Label" parent="."]
 visible = false
-offset_left = -83.0
-offset_top = -13.0
-offset_right = 86.0
-offset_bottom = 10.0
+offset_left = -127.0
+offset_top = -23.0
+offset_right = 128.0
+offset_bottom = 32.0
+theme_override_fonts/font = ExtResource("6_qq55v")
+theme_override_font_sizes/font_size = 25
 text = "Absolutely one of one, 
 a wave like no other!"
 horizontal_alignment = 1
 
 [node name="PerfectWinSong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_s07hx")
+stream = ExtResource("6_km7rn")
 
 [node name="Timer" type="Timer" parent="."]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bcslpdmtwmxlx"]
+[gd_scene load_steps=9 format=3 uid="uid://bcslpdmtwmxlx"]
 
 [ext_resource type="Script" uid="uid://bxme7gv25g8xh" path="res://Levels/tutorialpart_3.gd" id="1_dupb7"]
 [ext_resource type="Texture2D" uid="uid://bwse6ekg8mujt" path="res://2Dart/Lvl3_Background.png" id="2_b1r17"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="3_vgvll"]
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="4_88ycm"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="5_7dgxm"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="7_vgrfa"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_dupb7")
@@ -33,10 +34,12 @@ position = Vector2(500, 0)
 
 [node name="Label" type="Label" parent="CanvasLayer"]
 visible = false
-offset_left = 440.0
+offset_left = 370.0
 offset_top = 121.0
-offset_right = 712.0
-offset_bottom = 144.0
+offset_right = 779.0
+offset_bottom = 147.0
+theme_override_fonts/font = ExtResource("7_vgrfa")
+theme_override_font_sizes/font_size = 25
 text = "Alright, your ready for the real deal"
 horizontal_alignment = 1
 

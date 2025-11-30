@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://c5c5t6pter7lf"]
+[gd_scene load_steps=7 format=3 uid="uid://c5c5t6pter7lf"]
 
 [ext_resource type="Script" uid="uid://bc08c0n3ve2xd" path="res://Levels/win_screen_2.gd" id="1_7rwuw"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_j6x48"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_2xeu4"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_8lx57"]
-[ext_resource type="AudioStream" uid="uid://dm0e3x4r44qgi" path="res://sfx/end_theme_good.mp3" id="5_2xeu4"]
+[ext_resource type="AudioStream" uid="uid://wj3lci17lpyd" path="res://finalsongs/end_theme_good.wav" id="5_2xeu4"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="5_dbcpq"]
 
 [node name="WinScreen2" type="Node2D"]
 script = ExtResource("1_7rwuw")
@@ -43,10 +44,12 @@ region_rect = Rect2(272.078, 15.983201, 39.026917, 8.995051)
 
 [node name="GoodWinText" type="Label" parent="."]
 visible = false
-offset_left = -112.0
-offset_top = -25.0
-offset_right = 110.0
-offset_bottom = 24.0
+offset_left = -161.0
+offset_top = -26.0
+offset_right = 162.0
+offset_bottom = 29.0
+theme_override_fonts/font = ExtResource("5_dbcpq")
+theme_override_font_sizes/font_size = 25
 text = "This is only the first peak, 
 get ready for greater heights"
 horizontal_alignment = 1

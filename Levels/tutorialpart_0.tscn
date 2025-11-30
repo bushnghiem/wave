@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxhsf7nbux7xq"]
+[gd_scene load_steps=12 format=3 uid="uid://dxhsf7nbux7xq"]
 
 [ext_resource type="Script" uid="uid://sobq5iteg8cf" path="res://Levels/tutorialpart_0.gd" id="1_1a7w6"]
 [ext_resource type="Script" uid="uid://cieksaiwnxopg" path="res://cam.gd" id="1_ti2hj"]
@@ -6,6 +6,44 @@
 [ext_resource type="PackedScene" uid="uid://chck1raxgdtxp" path="res://particle.tscn" id="2_rw3fg"]
 [ext_resource type="Script" uid="uid://bsdgfw2p4vnmf" path="res://background.gd" id="3_jff4e"]
 [ext_resource type="PackedScene" uid="uid://bwub0cn28jngc" path="res://tutorial_rhythm.tscn" id="4_gvxqr"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="5_jff4e"]
+[ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="8_1f3fd"]
+
+[sub_resource type="Animation" id="Animation_1f3fd"]
+resource_name = "unfade"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Blackout:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yu440"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CanvasLayer/Blackout:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yu440"]
+_data = {
+&"RESET": SubResource("Animation_yu440"),
+&"unfade": SubResource("Animation_1f3fd")
+}
 
 [node name="TutorialPart0" type="Node2D"]
 script = ExtResource("1_1a7w6")
@@ -22,20 +60,30 @@ script = ExtResource("1_ti2hj")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
+[node name="Blackout" type="Sprite2D" parent="CanvasLayer"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(552.00006, 354)
+scale = Vector2(23.578127, 15.910156)
+texture = ExtResource("8_1f3fd")
+
 [node name="Instruction" type="Label" parent="CanvasLayer"]
 visible = false
 offset_left = 1034.0
 offset_top = 236.0
 offset_right = 1130.0
 offset_bottom = 261.0
+theme_override_fonts/font = ExtResource("5_jff4e")
+theme_override_font_sizes/font_size = 25
 text = "Press A Now"
 
 [node name="FinalMessage" type="Label" parent="CanvasLayer"]
 visible = false
-offset_left = 364.0
-offset_top = 169.0
-offset_right = 788.0
-offset_bottom = 244.0
+offset_left = 267.0
+offset_top = 139.0
+offset_right = 887.0
+offset_bottom = 223.0
+theme_override_fonts/font = ExtResource("5_jff4e")
+theme_override_font_sizes/font_size = 25
 text = "Great Job.
  Now you just need to press them in Rhythm.
  R usually resets the level but press R now to move on"
@@ -47,6 +95,11 @@ type = 4
 
 [node name="TutorialRhythm" parent="." instance=ExtResource("4_gvxqr")]
 process_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_yu440")
+}
 
 [connection signal="tutorial_left" from="Particle" to="." method="_on_particle_tutorial_left"]
 [connection signal="tutorial_left" from="Particle" to="TutorialRhythm" method="_on_particle_tutorial_left"]

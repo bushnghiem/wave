@@ -1,5 +1,7 @@
 extends Node2D
 
+func _ready() -> void:
+	$AnimationPlayer.play("unfade")
 
 func _on_particle_tutorial_left() -> void:
 	$CanvasLayer/Instruction.set_position(Vector2(46, 236))

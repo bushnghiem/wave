@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dcid2pyp1kpm0"]
+[gd_scene load_steps=5 format=3 uid="uid://dcid2pyp1kpm0"]
 
 [ext_resource type="Script" uid="uid://dep04en7pwxku" path="res://Levels/pre_tutorial_2.gd" id="1_5ybkj"]
 [ext_resource type="Texture2D" uid="uid://bwse6ekg8mujt" path="res://2Dart/Lvl3_Background.png" id="2_yky6y"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_0pywd"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="4_0pywd"]
 
 [node name="PreTutorial2" type="Node2D"]
 script = ExtResource("1_5ybkj")
@@ -30,10 +31,12 @@ region_enabled = true
 region_rect = Rect2(191.06157, 160.75, 73.40358, 70.28848)
 
 [node name="Label2" type="Label" parent="CanvasLayer"]
-offset_left = 513.0
-offset_top = 385.0
-offset_right = 635.0
-offset_bottom = 408.0
+offset_left = 434.0
+offset_top = 370.0
+offset_right = 722.0
+offset_bottom = 421.0
+theme_override_fonts/font = ExtResource("4_0pywd")
+theme_override_font_sizes/font_size = 50
 text = "4 Fast Notes"
 
 [connection signal="timeout" from="TutorialTime" to="." method="_on_tutorial_time_timeout"]

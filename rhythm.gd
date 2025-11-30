@@ -209,7 +209,7 @@ func right_button():
 		misses += 1
 
 func reset_button():
-	get_tree().change_scene_to_file("res://Levels/pre_main_level.tscn")
+	get_tree().change_scene_to_file("res://Levels/game.tscn")
 
 func quit_button():
 	get_tree().change_scene_to_file("res://Levels/title_screen.tscn")

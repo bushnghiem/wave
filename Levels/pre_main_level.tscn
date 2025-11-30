@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://07yaxkj8075f"]
+[gd_scene load_steps=6 format=3 uid="uid://07yaxkj8075f"]
 
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_87r11"]
 [ext_resource type="Script" uid="uid://bq1dilqasyy2s" path="res://Levels/pre_main_level.gd" id="1_xfgik"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="2_bx1id"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="2_xfgik"]
+[ext_resource type="Texture2D" uid="uid://caf4gx47i0qir" path="res://2Dart/concepts2.png" id="5_qf0mr"]
 
 [node name="PreMainLevel" type="Node2D"]
 script = ExtResource("1_xfgik")
@@ -109,5 +110,14 @@ self_modulate = Color(1, 1, 1, 0)
 position = Vector2(599, 339)
 scale = Vector2(12.5234375, 6.8359375)
 texture = ExtResource("1_87r11")
+
+[node name="Sun" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1056, 163)
+rotation = 0.34906584
+scale = Vector2(2, 2)
+texture = ExtResource("5_qf0mr")
+region_enabled = true
+region_rect = Rect2(126.86499, 111.05434, 34.179, 34.036026)
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

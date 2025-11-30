@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://qpjkgofht0ie"]
+[gd_scene load_steps=7 format=3 uid="uid://qpjkgofht0ie"]
 
 [ext_resource type="Script" uid="uid://br2y75vgjnwev" path="res://Levels/win_screen_1.gd" id="1_00kim"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="1_jpdng"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_7jx8e"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_k28s7"]
-[ext_resource type="AudioStream" uid="uid://dtpu26a1lsir1" path="res://sfx/end_theme_ok.mp3" id="5_7jx8e"]
+[ext_resource type="AudioStream" uid="uid://bybom8xce4y1h" path="res://finalsongs/end_theme_ok.wav" id="5_7jx8e"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="5_wsy2l"]
 
 [node name="WinScreen1" type="Node2D"]
 script = ExtResource("1_00kim")
@@ -43,10 +44,12 @@ region_rect = Rect2(240.00438, 16.007437, 16.012894, 9.073965)
 
 [node name="WinText" type="Label" parent="."]
 visible = false
-offset_left = -65.0
-offset_top = -12.0
-offset_right = 77.0
-offset_bottom = 11.0
+offset_left = -89.0
+offset_top = -10.0
+offset_right = 92.0
+offset_bottom = 16.0
+theme_override_fonts/font = ExtResource("5_wsy2l")
+theme_override_font_sizes/font_size = 25
 text = "Ehh, Good Enough"
 
 [node name="OkayMusic" type="AudioStreamPlayer" parent="."]
