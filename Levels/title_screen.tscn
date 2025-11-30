@@ -1,8 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://byl0qxtev3fo6"]
+[gd_scene load_steps=14 format=3 uid="uid://byl0qxtev3fo6"]
 
 [ext_resource type="Script" uid="uid://3y2l17mk86uc" path="res://Levels/title_screen.gd" id="1_frj5v"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="2_i1ewc"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_vn2h1"]
+[ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="4_1lkgl"]
 [ext_resource type="Texture2D" uid="uid://caf4gx47i0qir" path="res://2Dart/concepts2.png" id="4_17dc4"]
 [ext_resource type="AudioStream" uid="uid://budqnqce8741w" path="res://sfx/title_theme.mp3" id="4_g5eml"]
 
@@ -409,21 +410,26 @@ region_rect = Rect2(106.74446, 17.386377, 23.16681, 15.033785)
 
 [node name="Button" type="Button" parent="."]
 visible = false
-offset_left = 363.0
-offset_top = 394.0
-offset_right = 410.0
-offset_bottom = 425.0
+offset_left = 250.0
+offset_top = 389.0
+offset_right = 500.0
+offset_bottom = 449.0
+theme_override_fonts/font = ExtResource("4_1lkgl")
+theme_override_font_sizes/font_size = 50
 disabled = true
 text = "PLAY"
 
 [node name="Button2" type="Button" parent="."]
 visible = false
-offset_left = 763.0
-offset_top = 397.0
-offset_right = 832.0
-offset_bottom = 428.0
+offset_left = 652.0
+offset_top = 396.0
+offset_right = 902.0
+offset_bottom = 456.0
+theme_override_fonts/font = ExtResource("4_1lkgl")
+theme_override_font_sizes/font_size = 50
 disabled = true
-text = "Tutorial"
+text = "TUTORIAL
+"
 
 [node name="RedWave" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -524,18 +530,24 @@ libraries = {
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 355.0
-offset_top = 358.0
-offset_right = 412.0
-offset_bottom = 381.0
+offset_left = 334.0
+offset_top = 360.0
+offset_right = 419.0
+offset_bottom = 386.0
+theme_override_fonts/font = ExtResource("4_1lkgl")
+theme_override_font_sizes/font_size = 25
 text = "Press A"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="."]
 visible = false
-offset_left = 772.0
-offset_top = 366.0
-offset_right = 830.0
-offset_bottom = 389.0
+offset_left = 737.0
+offset_top = 368.0
+offset_right = 822.0
+offset_bottom = 394.0
+theme_override_fonts/font = ExtResource("4_1lkgl")
+theme_override_font_sizes/font_size = 25
 text = "Press D"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

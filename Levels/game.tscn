@@ -17,7 +17,6 @@ script = ExtResource("1_fc0e3")
 [node name="Rhythm" parent="." instance=ExtResource("2_7jktm")]
 start_delay = 4.0
 metronome_limit = 4
-auto_play = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 ignore_rotation = false

@@ -47,6 +47,8 @@ func reset_button():
 	get_tree().change_scene_to_file("res://Levels/pre_tutorial_1.tscn")
 
 func quit_button():
+	if get_tree().paused:
+		get_tree().paused = false
 	get_tree().change_scene_to_file("res://Levels/title_screen.tscn")
 
 func _on_particle_tutorial_left() -> void:
