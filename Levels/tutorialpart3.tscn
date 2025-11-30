@@ -40,7 +40,7 @@ offset_right = 779.0
 offset_bottom = 147.0
 theme_override_fonts/font = ExtResource("7_vgrfa")
 theme_override_font_sizes/font_size = 25
-text = "Alright, your ready for the real deal"
+text = "Alright, you're ready for the real deal"
 horizontal_alignment = 1
 
 [node name="Blackout" type="Sprite2D" parent="CanvasLayer"]
