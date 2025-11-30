@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dxurpxmxlbpa6"
+path="res://.godot/imported/_ slower1.wav-ad13c748aeed457f103b319d21c87e22.sample"
+
+[deps]
+
+source_file="res://finalsfx/_ slower1.wav"
+dest_files=["res://.godot/imported/_ slower1.wav-ad13c748aeed457f103b319d21c87e22.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

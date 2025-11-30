@@ -1,7 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://chck1raxgdtxp"]
+[gd_scene load_steps=11 format=3 uid="uid://chck1raxgdtxp"]
 
 [ext_resource type="Script" uid="uid://f5nl2vr58ucb" path="res://particle.gd" id="1_pxd2d"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="2_pxd2d"]
+[ext_resource type="AudioStream" uid="uid://cu0n0mr6l7btc" path="res://finalsfx/sfx Perfect.wav" id="3_w28hp"]
+[ext_resource type="AudioStream" uid="uid://ca67uxy0qbtis" path="res://finalsfx/sfx OK.wav" id="4_vjm4o"]
+[ext_resource type="AudioStream" uid="uid://8o73t6c1jyl0" path="res://finalsfx/sfx Miss.wav" id="5_c017l"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pxd2d"]
 particle_flag_disable_z = true
@@ -92,5 +95,14 @@ one_shot = true
 libraries = {
 &"": SubResource("AnimationLibrary_osap4")
 }
+
+[node name="Perfect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_w28hp")
+
+[node name="Okay" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_vjm4o")
+
+[node name="Mistake" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c017l")
 
 [connection signal="timeout" from="ColorReset" to="." method="_on_color_reset_timeout"]

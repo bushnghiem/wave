@@ -74,7 +74,7 @@ scale = Vector2(127.242195, 76.41406)
 texture = ExtResource("8_xfsjo")
 
 [node name="AsteroidStart" type="Timer" parent="."]
-wait_time = 35.0
+wait_time = 34.0
 one_shot = true
 autostart = true
 

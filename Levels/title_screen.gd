@@ -22,6 +22,7 @@ func _ready() -> void:
 
 func _on_button_pressed() -> void:
 	if !blackout:
+		$Buttonfx.play()
 		$AnimationPlayer4.play("volume")
 		$AnimationPlayer3.play("blackout")
 		get_tree().create_timer(1.5).timeout.connect(func():
@@ -32,6 +33,7 @@ func _on_button_pressed() -> void:
 
 func _on_button_2_pressed() -> void:
 	if !blackout:
+		$Buttonfx.play()
 		$AnimationPlayer4.play("volume")
 		$AnimationPlayer3.play("blackout")
 		get_tree().create_timer(1.5).timeout.connect(func():

@@ -37,8 +37,8 @@ var metronome_count = 0
 @export var auto_play = false
 @export var tutorial = false
 @export var tutorial_part = 1
-const win_ratio_threshold = 0.7
-const good_win_ratio = 0.7
+const win_ratio_threshold = 0.70
+const good_win_ratio = 0.70
 const note_length = 1.0
 const short_note_length = 0.5
 const press_window = 0.2
@@ -287,9 +287,8 @@ func add_notes(new_notes, type):
 			get_tree().create_timer(start_delay + song_length + note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index + 1]
-				$AudioStreamPlayer.play()
 				if (note_holder1 == "normal" and note_holder2 == "short"):
-					$AudioStreamPlayer2.play()
+					$Faster.play()
 					if press_left:
 						#print("press_left is true right now, thus you will press left and should swap to fast right")
 						swap_to_fast_right.emit()
@@ -330,9 +329,8 @@ func add_notes(new_notes, type):
 			get_tree().create_timer(start_delay + song_length + short_note_length).timeout.connect(func():
 				note_holder1 = timeline[current_note_index]
 				note_holder2 = timeline[current_note_index+1]
-				$AudioStreamPlayer.play()
 				if (note_holder1 == "short" and note_holder2 == "normal"):
-					$AudioStreamPlayer2.play()
+					$Slower.play()
 					if press_left:
 						#print("press_left is true right now, thus you will press left and should swap to normal right")
 						swap_to_norm_right.emit()

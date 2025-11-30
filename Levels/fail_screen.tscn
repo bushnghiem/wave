@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://bcfm2i5m7f86e" path="res://Levels/fail_screen.gd" id="1_ondbh"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="3_h3ary"]
 [ext_resource type="Texture2D" uid="uid://ddhsixlhed11d" path="res://2Dart/concepts.png" id="3_ndwvy"]
-[ext_resource type="AudioStream" uid="uid://b2lm8edtwx72c" path="res://sfx/game_over.mp3" id="5_h3ary"]
 [ext_resource type="FontFile" uid="uid://j04xyk6tyhdf" path="res://2Dart/BoldPixels.ttf" id="5_w4tfv"]
+[ext_resource type="AudioStream" uid="uid://btqh08bjabn3x" path="res://finalsfx/game_over.wav" id="6_w4tfv"]
 
 [node name="FailScreen" type="Node2D"]
 script = ExtResource("1_ondbh")
@@ -53,7 +53,7 @@ theme_override_font_sizes/font_size = 25
 text = "Waves do die?"
 
 [node name="FailureSong" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_h3ary")
+stream = ExtResource("6_w4tfv")
 
 [node name="Timer" type="Timer" parent="."]
 

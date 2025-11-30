@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://byl0qxtev3fo6"]
+[gd_scene load_steps=23 format=3 uid="uid://byl0qxtev3fo6"]
 
 [ext_resource type="Script" uid="uid://3y2l17mk86uc" path="res://Levels/title_screen.gd" id="1_frj5v"]
 [ext_resource type="Texture2D" uid="uid://d4ftsqo0anivd" path="res://2Dart/dario-bronnimann-hNQwIirOseE-unsplash.jpg" id="2_i1ewc"]
@@ -8,6 +8,7 @@
 [ext_resource type="AudioStream" uid="uid://c0el3ein1jp8u" path="res://finalsongs/title_theme_intro+main.wav" id="6_i7t4j"]
 [ext_resource type="AudioStream" uid="uid://c6xkldex1jnnt" path="res://finalsongs/title_theme_loop.wav" id="7_i7t4j"]
 [ext_resource type="Texture2D" uid="uid://b1b112ucgxmn1" path="res://icon.svg" id="8_ixmql"]
+[ext_resource type="AudioStream" uid="uid://ca67uxy0qbtis" path="res://finalsfx/sfx OK.wav" id="9_6aq0y"]
 
 [sub_resource type="Animation" id="Animation_g5eml"]
 length = 0.001
@@ -376,21 +377,6 @@ _data = {
 &"satellitespin": SubResource("Animation_17dc4")
 }
 
-[sub_resource type="Animation" id="Animation_ixmql"]
-resource_name = "blackout"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Blackout:self_modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_6aq0y"]
 length = 0.001
 tracks/0/type = "value"
@@ -406,37 +392,25 @@ tracks/0/keys = {
 "values": [Color(1, 1, 1, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aq0y"]
-_data = {
-&"RESET": SubResource("Animation_6aq0y"),
-&"blackout": SubResource("Animation_ixmql")
-}
-
-[sub_resource type="Animation" id="Animation_tv3x3"]
-resource_name = "volume"
+[sub_resource type="Animation" id="Animation_ixmql"]
+resource_name = "blackout"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/path = NodePath("Blackout:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, -80.0]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6aq0y"]
+_data = {
+&"RESET": SubResource("Animation_6aq0y"),
+&"blackout": SubResource("Animation_ixmql")
 }
 
 [sub_resource type="Animation" id="Animation_574tv"]
@@ -464,6 +438,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_tv3x3"]
+resource_name = "volume"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_574tv"]
@@ -670,6 +671,9 @@ libraries = {
 libraries = {
 &"": SubResource("AnimationLibrary_574tv")
 }
+
+[node name="Buttonfx" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_6aq0y")
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]
